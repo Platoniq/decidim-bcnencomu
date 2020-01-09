@@ -20,7 +20,7 @@ gem "uglifier", "~> 4.1"
 gem "sprockets", "~> 3.7.2"
 gem "faker", "~> 1.9"
 gem "health_check"
-gem "sidekiq"
+gem "sidekiq", "~> 5.2" # autoupgrade to 6.0 causes problems
 gem "sidekiq-cron"
 gem "sentry-raven"
 
