@@ -28,11 +28,12 @@ Rails.application.config.to_prepare do
 
   # Admin check suplent number
   Decidim::Consultations::Response.class_eval do
-    def is_suplent(lang)
-      title[lang]&.match(/([\- ]+)(suplente?)([\- ]+)/i)
+    def is_suplent?(lang)
+      title[lang]&.match(/([\-\( ]+)(suplente?)([\-\) ]+)/i)
     end
-    def is_blanc(lang)
-      title[lang]&.match(/([\- ]+)(blanco?)([\- ]+)/i)
+
+    def is_blanc?(lang)
+      title[lang]&.match(/([\-\( ]+)(blanco?)([\-\) ]+)/i)
     end
   end
 
@@ -42,10 +43,24 @@ Rails.application.config.to_prepare do
       responses.order({decidim_consultations_response_group_id: :asc, created_at: :asc})
     end
 
+    def get_blancs(lang)
+      responses.select do |r|
+        r.is_blanc?(lang)
+      end
+    end
+
     def get_suplents(lang)
       responses.select do |r|
-        r.is_suplent(lang)
+        r.is_suplent?(lang)
       end
+    end
+
+    def has_suplents?
+      @has_suplents ||= title.find { |l,t| get_suplents(l).count.positive? }.present?
+    end
+
+    def has_blancs?
+      @has_blancs ||= title.find { |l,t| get_blancs(l).count.positive? }.present?
     end
   end
 
@@ -53,11 +68,26 @@ Rails.application.config.to_prepare do
     def index
       enforce_permission_to :read, :response
       return unless current_question.multiple?
-      errors = []
+      suplents = []
       current_question.title.each do |l,t|
-        errors << l if current_question.get_suplents(l).count < current_question.min_votes.to_i
+        suplents << l if current_question.get_suplents(l).count < current_question.min_votes.to_i
       end
-      flash.now[:alert] = "El numero de suplents en els idiomes [#{errors.join(', ')}] es inferior a #{current_question.min_votes}" unless errors.blank?
+      blancs = []
+      current_question.title.each do |l,t|
+        blancs << l if current_question.get_blancs(l).count.zero?
+      end
+
+      if current_question.has_suplents?
+        flash.now[:alert] = "El numero de suplents en els idiomes [#{suplents.join(', ')}] es inferior a #{current_question.min_votes}" unless suplents.blank?
+      else
+        flash.now[:warning] =  "No s'han detectat suplents en questa votació. S'amagarà la informació relativa als suplents."
+      end
+
+      if current_question.has_blancs?
+        flash.now[:alert] = "Falta indicar vot en blanc en els idiomes [#{blancs.join(', ')}]" unless blancs.blank?
+      else
+        flash.now[:warning] =  "No s'han detectat vots en blanc."
+      end
     end
   end
 
@@ -96,7 +126,7 @@ Rails.application.config.to_prepare do
       return false if groups.count > 1 || groups.count == 0 || groups[0].blank?
       # max votable titular/suplents in this group
       valid = @question.responses.select {|r| r.response_group&.id == groups[0]}
-      valid_suplents = valid.select {|r| r.is_suplent locale }.count
+      valid_suplents = valid.select {|r| r.is_suplent? locale }.count
       min_titulars = [valid.count - valid_suplents, @question.max_votes - @question.min_votes].min
       min_suplents = [valid_suplents, @question.min_votes].min
       total_titulars = get_candidats(forms).count
@@ -108,6 +138,14 @@ Rails.application.config.to_prepare do
     end
 
     def num_votes_ok?(forms)
+      if get_blancs(forms).count.positive?
+        Rails.logger.debug "===has blanc: Number of votes #{forms.count} allowed 1"
+        return forms.count == 1
+      end
+      unless @question.has_suplents?
+        Rails.logger.debug "===has no supplents: Number of votes #{forms.count} allowed [#{@question.max_votes}, #{@question.min_votes}]"
+        return forms.count.between?(@question.min_votes, @question.max_votes)
+      end
       Rails.logger.debug "===candidats_ok? Total candidats #{get_candidats(forms).count} expected #{@question.max_votes-@question.min_votes}"
       Rails.logger.debug "===suplents_ok? Total suplents #{get_suplents(forms).count} expected #{@question.min_votes}"
       suplents_ok?(forms) && candidats_ok?(forms)
@@ -123,19 +161,19 @@ Rails.application.config.to_prepare do
 
     def get_blancs(forms)
       forms.select do |f|
-        f.response.is_blanc locale
+        f.response.is_blanc? locale
       end
     end
 
     def get_suplents(forms)
       forms.select do |f|
-        f.response.is_suplent locale
+        f.response.is_suplent? locale
       end
     end
 
     def get_candidats(forms)
       forms.reject do |f|
-        f.response.is_suplent locale
+        f.response.is_suplent? locale
       end
     end
   end
