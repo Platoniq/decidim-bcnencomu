@@ -100,6 +100,8 @@ $(function () {
 
   // Group click handeling
   $(groups).on('change', function() {
+    if(!HAS_SUPLENTS) return true;
+
     var $group = $(this);
     if($group.is(':checked')) {
       // uncheck other inputs

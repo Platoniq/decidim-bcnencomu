@@ -109,7 +109,16 @@ Rails.application.config.to_prepare do
       Rails.logger.debug "===VOTE==="
        @question = forms&.first&.context&.current_question
         if @question
-          return if num_votes_ok?(forms) || group_ok?(forms) || is_blanc?(forms)
+          if @question.has_suplents?
+            return if num_votes_ok?(forms) || group_ok?(forms) || is_blanc?(forms)
+          else
+            if get_blancs(forms).count.positive?
+              Rails.logger.debug "===has blanc: Number of votes #{forms.count} allowed 1"
+              return if forms.count == 1
+            end
+            Rails.logger.debug "===has no supplents: Number of votes #{forms.count} allowed [#{@question.max_votes}, #{@question.min_votes}]"
+            return if forms.count.between?(@question.min_votes, @question.max_votes)
+          end
         end
       Rails.logger.debug "===ERROR==="
       raise StandardError, I18n.t("activerecord.errors.models.decidim/consultations/vote.attributes.question.invalid_num_votes")
@@ -138,14 +147,6 @@ Rails.application.config.to_prepare do
     end
 
     def num_votes_ok?(forms)
-      if get_blancs(forms).count.positive?
-        Rails.logger.debug "===has blanc: Number of votes #{forms.count} allowed 1"
-        return forms.count == 1
-      end
-      unless @question.has_suplents?
-        Rails.logger.debug "===has no supplents: Number of votes #{forms.count} allowed [#{@question.max_votes}, #{@question.min_votes}]"
-        return forms.count.between?(@question.min_votes, @question.max_votes)
-      end
       Rails.logger.debug "===candidats_ok? Total candidats #{get_candidats(forms).count} expected #{@question.max_votes-@question.min_votes}"
       Rails.logger.debug "===suplents_ok? Total suplents #{get_suplents(forms).count} expected #{@question.min_votes}"
       suplents_ok?(forms) && candidats_ok?(forms)
