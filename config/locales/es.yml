@@ -119,6 +119,7 @@ es:
             description: 'Los participantes podían votar hasta a un máximo de %{limit} opciones (incluyendo suplentes).'
           total_participants: 'Un total de %{count} personas han participado en la votación.'
         voting_rules:
+          min_max_equals: 'Los participantes deben usar todos los votos disponibles, un total de %{total} excepto si la opción de votar en blanco está disponible.'
           minimum_votes_per_suplent:
             description: 'De estos, %{votes} votos debes usarlos para escojer suplentes.'
           minimum_votes_per_user:
