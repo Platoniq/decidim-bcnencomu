@@ -122,7 +122,7 @@ ca:
             description: 'Els participants podien votar fins a un màxim de %{limit} opcions (incloent suplents).'
           total_participants: 'Un total de %{count} persones han participat en la votació.'
         voting_rules:
-          min_max_equals: 'Els participants han de fer servir tots els vots disponibles, un total de %{total} excepte si es votar en blanc està disponible.'
+          min_max_equals: 'Els participants han de fer servir tots els vots disponibles, un total de %{total}, excepte si es vota en blanc.'
           minimum_votes_per_suplent:
             description: 'D''aquests, %{votes} vots els has de fer servir per triar suplents.'
           minimum_votes_per_user:
