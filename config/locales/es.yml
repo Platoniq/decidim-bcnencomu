@@ -99,6 +99,9 @@ es:
       direct_verifications_marti:
         name: Sant Martí
         explanation: Verificación directa para el censo de Sant Martí
+      direct_verifications_activistes:
+        name: Activistas de BCNenComú
+        explanation: Censo de actvistas
     consultations:
       question:
         take_part: Votar
