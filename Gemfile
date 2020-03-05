@@ -12,6 +12,7 @@ gem "decidim-consultations", DECIDIM_VERSION
 # gem "decidim-initiatives", DECIDIM_VERSION
 gem "decidim-direct_verifications", github: 'Platoniq/decidim-verifications-direct_verifications'
 
+gem "geocoder", "1.5.2"
 gem "bootsnap", "~> 1.3"
 
 gem "puma", "~> 3.0"
