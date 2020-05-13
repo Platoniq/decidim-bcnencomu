@@ -69,17 +69,19 @@ Rails.application.config.to_prepare do
   # end
   #
   # Vote validation override
-  Decidim::Consultations::MultipleVoteQuestion.class_eval do
+  Decidim::Consultations::MultiVoteForm.class_eval do
     def locale
       # I18n.locale.to_s
       'ca'
     end
 
-	  def check_num_votes
+    private
+
+	  def valid_num_of_votes
       Rails.logger.debug "===VOTE==="
-       @question = forms&.first&.context&.current_question
+       @question = context&.current_question
         if @question
-          return if num_votes_ok?(forms) || group_ok?(forms) || is_blanc?(forms)
+          return if num_votes_ok?(vote_forms) || group_ok?(vote_forms) || is_blanc?(vote_forms)
         end
       Rails.logger.debug "===ERROR==="
       raise StandardError, I18n.t("activerecord.errors.models.decidim/consultations/vote.attributes.question.invalid_num_votes")

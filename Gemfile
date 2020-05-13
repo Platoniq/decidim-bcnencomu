@@ -4,31 +4,30 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-#DECIDIM_VERSION = "0.17.0"
-DECIDIM_VERSION = {github: "Platoniq/decidim", branch: "0.18-live"}
-# DECIDIM_VERSION = {path: "../decidim"}
+#DECIDIM_VERSION = "0.21.0"
+DECIDIM_VERSION={ :git => "https://github.com/decidim/decidim", :branch => "0.21-stable"}
+
 gem "decidim", DECIDIM_VERSION
 gem "decidim-consultations", DECIDIM_VERSION
 # gem "decidim-initiatives", DECIDIM_VERSION
 gem "decidim-direct_verifications", github: 'Platoniq/decidim-verifications-direct_verifications'
 
-gem "bootsnap", "~> 1.3"
+gem "bootsnap", "~> 1.4"
 
-gem "puma", "~> 3.0"
+gem "puma", "~> 4.3.3"
 gem "uglifier", "~> 4.1"
 
-gem "sprockets", "~> 3.7.2"
 gem "faker", "~> 1.9"
 gem "health_check"
-gem "sidekiq"
+gem "sidekiq", "~> 5.2"
 gem "sidekiq-cron"
 gem "sentry-raven"
 
-
 group :development, :test do
-  gem "byebug", "~> 10.0", platform: :mri
+  gem "byebug", "~> 11.0", platform: :mri
   gem 'dotenv-rails'
 
+  gem "rspec"
   gem "decidim-dev", DECIDIM_VERSION
 end
 

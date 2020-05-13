@@ -40,3 +40,4 @@ public/uploads
 .rbenv-vars
 
 spec/decidim_dummy_app
+.rspec-failures

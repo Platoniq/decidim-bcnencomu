@@ -14,7 +14,7 @@
     </div>
   </div>
 
-  <% question.responses.sort_by { |r| r.created_at } .each do |response| %>
+  <% question.sorted_responses.each do |response| %>
     <div class="row">
       <div class="columns medium-8 medium-offset-2">
         <button class="button hollow expanded response-title"
