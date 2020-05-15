@@ -8,11 +8,15 @@ $(function () {
   //   itemSelector: '.masonry .column',
   // });
 
-  var MAX_SUPLENTS=$('#remaining-votes-count').data('suplents-number') || 2;
+  var MIN_VOTES=parseInt($('#remaining-votes-count').data('min-votes'), 10);
+  var MAX_VOTES=parseInt($('#remaining-votes-count').data('max-votes'), 10);
+  var HAS_SUPLENTS=!!$('#remaining-votes-count').data('has-suplents');
+  var HAS_BLANCS=!!$('#remaining-votes-count').data('has-blancs');
+  var MAX_SUPLENTS = HAS_SUPLENTS ? MIN_VOTES : 0;
   var MAX_CANDIDATS = $('#remaining-votes-count').text() - MAX_SUPLENTS;
-  // console.log('MAX_CANDIDATS', MAX_CANDIDATS, 'MAX_SUPLENTS', MAX_SUPLENTS)
+
+  console.log('MAX_CANDIDATS', MAX_CANDIDATS, 'MAX_SUPLENTS', MAX_SUPLENTS, 'MIN_VOTES', MIN_VOTES, 'MAX_VOTES', MAX_VOTES, "HAS_SUPLENTS", HAS_SUPLENTS, "HAS_BLANCS", HAS_BLANCS)
   // Search for suplents
-  var SUPLENTS = [];
   var s_regex = /([\- ]+)(suplente?)([\- ]+)/i;
   var b_regex = /([\- ]+)(en blanco?)([\- ]+)/i;
   $('form .multiple_votes_form label').each(function(){
@@ -40,9 +44,11 @@ $(function () {
   function isSuplent($input) {
     return $input.parent().find('label').text().match(s_regex);
   }
+
   function isBlanc($input) {
     return $input.parent().find('label').text().match(b_regex);
   }
+
   function updateCounters() {
     candidats = MAX_CANDIDATS;
     suplents = MAX_SUPLENTS;
@@ -53,6 +59,7 @@ $(function () {
       if(isBlanc($(this))) $blanc = $(this);
     });
   }
+
   function updateBanner() {
     $remainingVotesCount.text(candidats + suplents);
     // If group marked, set to zero
@@ -93,6 +100,8 @@ $(function () {
 
   // Group click handeling
   $(groups).on('change', function() {
+    if(!HAS_SUPLENTS) return true;
+
     var $group = $(this);
     if($group.is(':checked')) {
       // uncheck other inputs
@@ -119,11 +128,16 @@ $(function () {
     if($(groups).is(':checked')) {
       return true;
     }
+
     // If blanc is checked, bypasses counters
     if($blanc && $blanc.is(':checked')) {
       return true;
     }
+
+    if(!HAS_SUPLENTS) return true;
+
     updateCounters();
+
     if(candidats > 0) {
       alert('Encara et falten votar ' + candidats + ' candidats');
       return false;

@@ -2,7 +2,12 @@
   <% if group %>
     <div class="card__top">
       <div class="card__content multiple_votes_form_group_title">
-        <h5 class="card__title"><label><input type="checkbox"> <%= translated_attribute group.title %></label></h5>
+        <h5 class="card__title"><label>
+          <% if question.has_suplents? %>
+            <input type="checkbox">
+          <% end %>
+          <%= translated_attribute group.title %>
+        </label></h5>
       </div>
     </div>
   <% end %>

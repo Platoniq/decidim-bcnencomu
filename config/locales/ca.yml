@@ -3,7 +3,7 @@ ca:
     attributes:
       question:
         max_votes: 'Màxim número de vots'
-        min_votes: 'Número de suplents'
+        min_votes: "Mínim número de vots, o número de suplents si n'hi ha algun"
     errors:
       models:
         question:
@@ -99,6 +99,9 @@ ca:
       direct_verifications_marti:
         name: Sant Martí
         explanation: Verificació directa per al cens de Sant Martí
+      direct_verifications_activistes:
+        name: Activistes de BCNenComú
+        explanation: Cens d'actvistes
     consultations:
       question:
         take_part: Vota
@@ -119,8 +122,11 @@ ca:
             description: 'Els participants podien votar fins a un màxim de %{limit} opcions (incloent suplents).'
           total_participants: 'Un total de %{count} persones han participat en la votació.'
         voting_rules:
-          minimum_votes_per_user:
+          min_max_equals: 'Els participants han de fer servir tots els vots disponibles, un total de %{total}, excepte si es vota en blanc.'
+          minimum_votes_per_suplent:
             description: 'D''aquests, %{votes} vots els has de fer servir per triar suplents.'
+          minimum_votes_per_user:
+            description: 'Has de votar un mínim de %{votes} opcions.'
           title: 'La votació està subjecte a les següents regles:'
           vote_limit:
             description: 'Pots votar fins a un màxim de %{limit} opcions.'
