@@ -112,7 +112,7 @@ Rails.application.config.to_prepare do
        @question = context&.current_question
         if @question
           if @question.has_suplents?
-            return if num_votes_ok?(vore_forms) || group_ok?(vote_forms) || is_blanc?(vote_forms)
+            return if num_votes_ok?(vote_forms) || group_ok?(vote_forms) || is_blanc?(vote_forms)
           else
             if get_blancs(forms).count.positive?
               Rails.logger.debug "===has blanc: Number of votes #{forms.count} allowed 1"
@@ -127,7 +127,7 @@ Rails.application.config.to_prepare do
 	  end
 
     def is_blanc?(forms)
-      Rails.logger.debug "===is_blanc? Total blancs #{get_blancs(forms).count} total forms #{@forms.count}"
+      Rails.logger.debug "===is_blanc? Total blancs #{get_blancs(forms).count} total forms #{forms.count}"
       (get_blancs(forms).count == forms.count) && (forms.count > 0)
     end
 
