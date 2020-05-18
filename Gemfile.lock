@@ -363,10 +363,6 @@ GEM
     doorkeeper (5.4.0)
       railties (>= 5)
     doorkeeper-i18n (4.0.1)
-    dotenv (2.7.5)
-    dotenv-rails (2.7.5)
-      dotenv (= 2.7.5)
-      railties (>= 3.2, < 6.1)
     equalizer (0.0.11)
     erb_lint (0.0.30)
       activesupport
@@ -807,7 +803,6 @@ DEPENDENCIES
   decidim-consultations!
   decidim-dev!
   decidim-direct_verifications!
-  dotenv-rails
   faker (~> 1.9)
   fog-aws
   geocoder (= 1.5.2)
@@ -828,4 +823,4 @@ RUBY VERSION
    ruby 2.6.3p62
 
 BUNDLED WITH
-   2.1.4
+   2.1.2

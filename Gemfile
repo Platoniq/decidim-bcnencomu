@@ -23,12 +23,11 @@ gem "health_check"
 gem "sidekiq", "~> 5.2"
 gem "sidekiq-cron"
 gem "sentry-raven"
+gem "rspec"
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
-  gem 'dotenv-rails'
 
-  gem "rspec"
   gem "decidim-dev", DECIDIM_VERSION
 end
 
