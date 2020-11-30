@@ -18,6 +18,15 @@ checksums = [
   {
     package: "decidim-consultations",
     files: {
+      # controllers
+      "/app/controllers/decidim/consultations/admin/responses_controller.rb" => "b8a63f442dd146f1ea3596d485ea29f7",
+      # forms
+      "/app/forms/decidim/consultations/multi_vote_form.rb" => "fc2160f0b5e85c9944d652b568c800f3",
+      # helpers
+      "/app/helpers/decidim/consultations/questions_helper.rb" => "9775042c1648009e43a05d3276bf53ff",
+      # models
+      "/app/models/decidim/consultations/response.rb" => "03f21a7e00b6f06ad93a70efdf82a9e4",
+      "/app/models/decidim/consultations/question.rb" => "41f6887340926eff8e7d9db43f81b01c",
       # views
       "/app/views/decidim/consultations/admin/question_configuration/_form.html.erb" => "0655db0b199a7cb49389f055210a9cdb",
       "/app/views/decidim/consultations/admin/responses/_form.html.erb" => "6846d66395457acdd7d6ec839a49b0ec",
