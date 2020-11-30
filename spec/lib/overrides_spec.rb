@@ -10,19 +10,24 @@ checksums = [
     package: "decidim-core",
     files: {
       # layouts
-      "/app/views/layouts/decidim/_head_extra.html.erb" => "1b8237357754cf519f4e418135f78440",
-      "/app/views/layouts/decidim/_logo.html.erb" => "2713715db652c8107f1fe5f2c4d618b6",
-      "/app/views/layouts/decidim/_mini_footer.html.erb" => "55a9ca723b65b8d9eadb714818a89bb3",
-      "/app/views/layouts/decidim/_organization_colors.html.erb" => "34f0d188a62108e7a57a1c270daed8bb",
-      # validators
-      "/app/validators/etiquette_validator.rb" => "ef21db526e4bec7cc574777937214cc1"
+      "/app/views/layouts/decidim/_main_footer.html.erb" => "995cddce875d4a8b49a9997526145799",
+      # views
+      "/app/views/decidim/devise/sessions/new.html.erb" => "1da8569a34bcd014ffb5323c96391837",
     }
   },
   {
-    package: "decidim-proposals",
+    package: "decidim-consultations",
     files: {
-      # forms
-      "/app/forms/decidim/proposals/proposal_wizard_create_step_form.rb" => "b99c3223f1e75f2a69a89ae9a3d28182"
+      # views
+      "/app/views/decidim/consultations/admin/question_configuration/_form.html.erb" => "0655db0b199a7cb49389f055210a9cdb",
+      "/app/views/decidim/consultations/admin/responses/_form.html.erb" => "6846d66395457acdd7d6ec839a49b0ec",
+      "/app/views/decidim/consultations/consultations/_question.html.erb" => "364d7f8370cdbe7ae70c545fff2e21fa",
+      "/app/views/decidim/consultations/consultations/_regular_questions.html.erb" => "0c5093e02db04da679d92415e2abd937", # todo check upgrade
+      "/app/views/decidim/consultations/consultations/show.html.erb" => "84a1569b796f724efa304b9dfc40f68a",  # todo check upgrade
+      "/app/views/decidim/consultations/question_multiple_votes/_form.html.erb" => "af610283ce7ee20f5ef786228a263d4a",  # todo check upgrade
+      "/app/views/decidim/consultations/question_multiple_votes/_voting_rules.html.erb" => "5290000e36d1508d588218ad3bb8c808",  # todo check upgrade
+      "/app/views/decidim/consultations/questions/_vote_modal.html.erb" => "ae7c38afcc6588a00f8298ea69769da7",  # todo check upgrade
+      "/app/views/decidim/consultations/questions/show.html.erb" => "1608782bab215fb95920fc3e824a8a5a",  # todo check upgrade
     }
   }
 ]
