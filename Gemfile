@@ -4,17 +4,15 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { :git => "https://github.com/decidim/decidim", :tag => "v0.23.1" }
+DECIDIM_VERSION = { :git => "https://github.com/Platoniq/decidim", :branch => "temp/0.23-stable" }
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-consultations", DECIDIM_VERSION
-# gem "decidim-initiatives", DECIDIM_VERSION
 gem "decidim-direct_verifications", github: 'Platoniq/decidim-verifications-direct_verifications'
 
-gem "geocoder", "1.5.2"
 gem "bootsnap", "~> 1.4"
 
-gem "puma", "~> 4.3.3"
+gem "puma", "~> 4.3.5"
 gem "uglifier", "~> 4.1"
 
 gem "faker", "~> 1.9"
