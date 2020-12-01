@@ -1,24 +1,16 @@
 app/assets/javascripts/decidim/consultations/utils_multiple.js
-REMOVED app/assets/javascripts/decidim/consultations/vote_dialog.js
 app/views/decidim/consultations/admin/question_configuration/_form.html.erb
 app/views/decidim/consultations/consultations/_question.html.erb
 app/views/decidim/consultations/consultations/_regular_questions.html.erb
 app/views/decidim/consultations/consultations/show.html.erb
 app/views/decidim/consultations/question_multiple_votes/_form.html.erb
 app/views/decidim/consultations/question_multiple_votes/_voting_rules.html.erb
-REMOVED app/views/decidim/consultations/question_multiple_votes/show.html.erb
-REMOVED app/views/decidim/consultations/question_votes/update_vote_button.js.erb
-REMOVED app/views/decidim/consultations/question_multiple_votes/_update_vote_button.js.erb
-REMOVED app/views/decidim/consultations/questions/_vote_button.html.erb
 app/views/decidim/consultations/questions/_vote_modal.html.erb
-REMOVED app/views/decidim/consultations/questions/_vote_modal_confirm.html.erb
 app/views/decidim/consultations/questions/show.html.erb
 
 app/views/decidim/devise/sessions/new.html.erb
 
 app/views/layouts/decidim/_main_footer.html.erb
-REMOVED app/views/layouts/decidim/_wrapper.html.erb
-REMOVED app/views/layouts/decidim/question.html.erb
 
 app/controllers/decidim_controller.rb
 app/controllers/passwords_controller.rb
