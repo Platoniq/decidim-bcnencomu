@@ -31,11 +31,11 @@ Rails.application.config.to_prepare do
   # /app/models/decidim/consultations/response.rb
   # Admin check suplent number
   Decidim::Consultations::Response.class_eval do
-    def is_suplent?(lang)
+    def suplent?(lang)
       title[lang]&.match(/([\-\( ]+)(suplente?)([\-\) ]+)/i)
     end
 
-    def is_blanc?(lang)
+    def blanc?(lang)
       title[lang]&.match(/([\-\( ]+)(blanco?)([\-\) ]+)/i)
     end
   end
@@ -49,13 +49,13 @@ Rails.application.config.to_prepare do
 
     def get_blancs(lang)
       responses.select do |r|
-        r.is_blanc?(lang)
+        r.blanc?(lang)
       end
     end
 
     def get_suplents(lang)
       responses.select do |r|
-        r.is_suplent?(lang)
+        r.suplent?(lang)
       end
     end
 
@@ -114,12 +114,13 @@ Rails.application.config.to_prepare do
 
     private
 
+    # rubocop:disable Metrics/BlockNesting
     def valid_num_of_votes
       Rails.logger.debug "===VOTE==="
       @question = context&.current_question
       if @question
         if @question.has_suplents?
-          return if num_votes_ok?(vote_forms) || group_ok?(vote_forms) || is_blanc?(vote_forms)
+          return if num_votes_ok?(vote_forms) || group_ok?(vote_forms) || blanc?(vote_forms)
         else
           if get_blancs(forms).count.positive?
             Rails.logger.debug "===has blanc: Number of votes #{forms.count} allowed 1"
@@ -132,20 +133,21 @@ Rails.application.config.to_prepare do
       Rails.logger.debug "===ERROR==="
       raise StandardError, I18n.t("activerecord.errors.models.decidim/consultations/vote.attributes.question.invalid_num_votes")
     end
+    # rubocop:enable Metrics/BlockNesting
 
-    def is_blanc?(forms)
-      Rails.logger.debug "===is_blanc? Total blancs #{get_blancs(forms).count} total forms #{forms.count}"
-      (get_blancs(forms).count == forms.count) && (forms.count > 0)
+    def blanc?(forms)
+      Rails.logger.debug "===blanc? Total blancs #{get_blancs(forms).count} total forms #{forms.count}"
+      (get_blancs(forms).count == forms.count) && forms.count.positive?
     end
 
     def group_ok?(forms)
       groups = forms.map { |f| f.response.response_group&.id }.uniq
       Rails.logger.debug "===group_ok? groups found #{groups.count}, group ids #{groups}"
-      return false if groups.count > 1 || groups.count == 0 || groups[0].blank?
+      return false if groups.count > 1 || groups.count.zero? || groups[0].blank?
 
       # max votable titular/suplents in this group
       valid = @question.responses.select { |r| r.response_group&.id == groups[0] }
-      valid_suplents = valid.select { |r| r.is_suplent? locale }.count
+      valid_suplents = valid.select { |r| r.suplent? locale }.count
       min_titulars = [valid.count - valid_suplents, @question.max_votes - @question.min_votes].min
       min_suplents = [valid_suplents, @question.min_votes].min
       total_titulars = get_candidats(forms).count
@@ -172,19 +174,19 @@ Rails.application.config.to_prepare do
 
     def get_blancs(forms)
       forms.select do |f|
-        f.response.is_blanc? locale
+        f.response.blanc? locale
       end
     end
 
     def get_suplents(forms)
       forms.select do |f|
-        f.response.is_suplent? locale
+        f.response.suplent? locale
       end
     end
 
     def get_candidats(forms)
       forms.reject do |f|
-        f.response.is_suplent? locale
+        f.response.suplent? locale
       end
     end
   end
