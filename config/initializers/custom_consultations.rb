@@ -4,7 +4,8 @@
 
 Rails.application.config.to_prepare do
 
-  #hide buttons if no next
+  # /app/helpers/decidim/consultations/questions_helper.rb
+  # hide buttons if no next
   Decidim::Consultations::QuestionsHelper.class_eval do
     def display_next_previous_button(direction, optional_classes = "")
       css = "card__button button hollow " + optional_classes
@@ -26,6 +27,7 @@ Rails.application.config.to_prepare do
     end
   end
 
+  # /app/models/decidim/consultations/response.rb
   # Admin check suplent number
   Decidim::Consultations::Response.class_eval do
     def is_suplent?(lang)
@@ -37,6 +39,7 @@ Rails.application.config.to_prepare do
     end
   end
 
+  # /app/models/decidim/consultations/question.rb
   Decidim::Consultations::Question.class_eval do
     # Ensure order by time
     def sorted_responses
@@ -64,6 +67,7 @@ Rails.application.config.to_prepare do
     end
   end
 
+  # /app/controllers/decidim/consultations/admin/responses_controller.rb
   Decidim::Consultations::Admin::ResponsesController.class_eval do
     def index
       enforce_permission_to :read, :response
@@ -91,6 +95,7 @@ Rails.application.config.to_prepare do
     end
   end
 
+  # /app/forms/decidim/consultations/multi_vote_form.rb
   # Admin validation customization
   # Decidim::Consultations::Admin::QuestionConfigurationForm.class_eval do
   #   def min_lower_than_max
@@ -180,5 +185,4 @@ Rails.application.config.to_prepare do
       end
     end
   end
-
 end
