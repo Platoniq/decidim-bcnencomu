@@ -1,13 +1,15 @@
-require 'csv'
+# frozen_string_literal: true
 
-ORG=1
-KEEP=%w( ivan@platoniq.net )
+require "csv"
+
+ORG = 1
+KEEP = %w(ivan@platoniq.net).freeze
 
 namespace :bec do
   namespace :users do
     desc "Handles BcnEnComu common operations with users"
     task count: :environment do
-      lines = get_lines
+      lines = lines
       emails = filter_emails(lines)
       registered = get_registered(emails)
       unregistered = get_unregistered(emails)
@@ -20,39 +22,37 @@ namespace :bec do
       puts "#{pirates.count} pirate users"
       puts "#{voted_pirates.count} voted pirate users"
       puts "#{non_voted_pirates.count} non voted pirate users"
-      if pirates
-        puts "Use bec:users:delete_pirates to remove pirates"
-      end
+      puts "Use bec:users:delete_pirates to remove pirates" if pirates
     end
 
     task registered: :environment do
-      emails = filter_emails(get_lines)
+      emails = filter_emails(lines)
       puts get_registered(emails).pluck(:email)
     end
 
     task unregistered: :environment do
-      emails = filter_emails(get_lines)
+      emails = filter_emails(lines)
       puts get_unregistered(emails)
     end
 
     task pirates: :environment do
-      emails = filter_emails(get_lines)
+      emails = filter_emails(lines)
       get_non_voted_pirates(emails).each do |u|
         puts "#{u.id} #{u.email}"
       end
     end
 
     task voted_pirates: :environment do
-      emails = filter_emails(get_lines)
+      emails = filter_emails(lines)
       get_voted_pirates(emails).each do |u|
         puts "#{u.id} #{u.email}"
       end
     end
 
     task delete_pirates: :environment do
-      emails = filter_emails(get_lines)
+      emails = filter_emails(lines)
       pirates = get_non_voted_pirates(emails)
-      reason = "Administrative removal at #{DateTime.now}"
+      reason = "Administrative removal at #{Time.zone.now}"
       pirates.each do |u|
         puts "Destroying non-voted user #{u.id} #{u.name} #{u.email}"
         Decidim::DestroyAccount.call(u, OpenStruct.new(valid?: true, delete_reason: reason))
@@ -60,28 +60,26 @@ namespace :bec do
     end
 
     task delete_voted_pirates: :environment do
-      emails = filter_emails(get_lines)
+      emails = filter_emails(lines)
       pirates = get_voted_pirates(emails)
-      reason = "Administrative removal at #{DateTime.now}"
+      reason = "Administrative removal at #{Time.zone.now}"
       pirates.each do |u|
         puts "Destroying voted user #{u.id} #{u.name} #{u.email}"
         Decidim::DestroyAccount.call(u, OpenStruct.new(valid?: true, delete_reason: reason))
       end
     end
 
-    def get_lines
-      begin
-        file = ARGV[1]
-        usage if file.blank?
-        CSV.read(file).pluck(0)
-      rescue => e
-        p e.message
-        usage
-      end
+    def lines
+      file = ARGV[1]
+      usage if file.blank?
+      CSV.read(file).pluck(0)
+    rescue StandardError => e
+      p e.message
+      usage
     end
 
     def filter_emails(lines)
-      lines.select { |l| l.include?('@') }
+      lines.select { |l| l.include?("@") }
     end
 
     def get_registered(emails)
@@ -94,7 +92,7 @@ namespace :bec do
     end
 
     def get_pirates(emails)
-      emails = emails | KEEP | [ "", nil ]
+      emails = emails | KEEP | ["", nil]
       Decidim::User.where(decidim_organization_id: ORG).where.not(email: emails)
     end
 
@@ -125,5 +123,5 @@ namespace :bec do
     end
   end
 
-  task users: 'bec:users:count'
+  task users: "bec:users:count"
 end

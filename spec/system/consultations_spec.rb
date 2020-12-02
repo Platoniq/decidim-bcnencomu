@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require "rails_helper"
 
-describe 'Visit the consultations main page', type: :system, perform_enqueued: true do
+describe "Visit the consultations main page", type: :system, perform_enqueued: true do
   let(:organization) { create :organization }
   let!(:older_consultation) do
     create(:consultation, :published, organization: organization, created_at: 1.month.ago)
@@ -21,8 +21,8 @@ describe 'Visit the consultations main page', type: :system, perform_enqueued: t
     visit decidim_consultations.consultations_path
   end
 
-  it 'renders the consultations page' do
-    expect(page).to have_content('2 CONSULTATIONS')
+  it "renders the consultations page" do
+    expect(page).to have_content("2 CONSULTATIONS")
   end
 
   context "when visiting a consultation" do

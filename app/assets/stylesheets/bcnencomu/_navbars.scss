@@ -46,6 +46,7 @@
 		border-radius: 12.5%;
 		[data-toggle] {
 			margin-bottom:0;
+			padding: 6px 3px;
 		}
 		.icon--menu {
 			fill: $primary;
@@ -63,6 +64,7 @@
 	&_user__login{
 	  a {
 	    font-weight: 500;
+	    color: $link-color;
 	  }
 	}
 
@@ -92,7 +94,26 @@
 		svg {
 			color: $navbar-fg;
 		}
+		&:not(:focus-within) button {
+		  background: $navbar-bg;
+		}
 	}
 }
 
 
+.hide-for-medium{
+
+  .topbar__user__login{
+    border-bottom: none;
+    border-top: none;
+
+    a{
+      color: $navbar-bg;
+      font-weight: 600;
+
+      &:hover{
+        color: $anchor-color;
+      }
+    }
+  }
+}
