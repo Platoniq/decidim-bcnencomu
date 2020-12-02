@@ -6,13 +6,13 @@ Decidim.configure do |config|
 
   # Change these lines to set your preferred locales
   config.default_locale = :ca
-  config.available_locales = [:en, :ca, :es]
+  config.available_locales = [:ca, :es]
 
   # Geocoder configuration
-  config.geocoder = {
-    static_map_url: "https://image.maps.cit.api.here.com/mia/1.6/mapview",
-    here_app_id: Rails.application.secrets.geocoder[:here_app_id],
-    here_app_code: Rails.application.secrets.geocoder[:here_app_code]
+  config.maps = {
+    provider: :here,
+    api_key: Rails.application.secrets.maps[:api_key],
+    static: { url: "https://image.maps.cit.api.here.com/mia/1.6/mapview" }
   }
 
   # Custom resource reference generator method
