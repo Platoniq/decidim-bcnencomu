@@ -204,14 +204,6 @@ GIT
     decidim-verifications (0.23.1)
       decidim-core (= 0.23.1)
 
-GIT
-  remote: https://github.com/Platoniq/decidim-verifications-direct_verifications.git
-  revision: 310f0e6a1556c41f7b4bb3bbde144e0d1aaf4fcd
-  specs:
-    decidim-direct_verifications (0.22.1)
-      decidim-admin (>= 0.22.0)
-      decidim-core (>= 0.22.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -339,6 +331,9 @@ GEM
     db-query-matchers (0.9.0)
       activesupport (>= 4.0, <= 6.0)
       rspec (~> 3.0)
+    decidim-direct_verifications (0.22.1)
+      decidim-admin (>= 0.22.0)
+      decidim-core (>= 0.22.0)
     declarative-builder (0.1.0)
       declarative-option (< 0.2.0)
     declarative-option (0.1.0)
@@ -819,7 +814,7 @@ DEPENDENCIES
   decidim!
   decidim-consultations!
   decidim-dev!
-  decidim-direct_verifications!
+  decidim-direct_verifications (~> 0.22.1)
   faker (~> 1.9)
   fog-aws
   health_check
