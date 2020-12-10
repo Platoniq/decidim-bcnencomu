@@ -14,11 +14,10 @@ gem "bootsnap", "~> 1.4"
 
 gem "puma", "~> 4.3.5"
 gem "uglifier", "~> 4.1"
-gem "wicked_pdf", "~> 1.4"
 
 gem "faker", "~> 1.9"
 gem "health_check"
-gem "rspec"
+
 gem "sentry-raven"
 gem "sidekiq", "~> 5.2"
 gem "sidekiq-cron"

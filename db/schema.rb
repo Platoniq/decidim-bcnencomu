@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_125520) do
+ActiveRecord::Schema.define(version: 2020_12_10_133131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -551,6 +551,8 @@ ActiveRecord::Schema.define(version: 2020_11_30_125520) do
     t.datetime "last_comment_at"
     t.integer "last_comment_by_id"
     t.string "last_comment_by_type"
+    t.datetime "archived_at"
+    t.index ["archived_at"], name: "index_decidim_debates_debates_on_archived_at"
     t.index ["closed_at"], name: "index_decidim_debates_debates_on_closed_at"
     t.index ["decidim_author_id", "decidim_author_type"], name: "index_decidim_debates_debates_on_decidim_author"
     t.index ["decidim_component_id"], name: "index_decidim_debates_debates_on_decidim_component_id"

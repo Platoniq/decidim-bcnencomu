@@ -32,7 +32,27 @@ es:
       question_header:
         back_to_question: 'Volver a la pregunta'
   decidim:
+    debates:
+      actions:
+        active: Detabes activos
+        archive: Archivar
+        archived: Debates archivados
+        unarchive: Desarchivar
+      admin:
+        debates:
+          empty: No se han encontrado debates.
     admin:
+      debate_closes:
+        edit:
+          archive: Archiva este debate
+          archive_help: Archivar este debate lo esconderà del listado principal
+      debates:
+        archive:
+          invalid: There was a problem archiving the debate.
+          success: Debate archivado.
+        unarchive:
+          invalid: There was a problem unarchiving the debate.
+          success: Debate desarchivado.
       titles:
         results: Resultados
         response_groups: Grupos de respuestas
