@@ -32,7 +32,27 @@ ca:
       question_header:
         back_to_question: 'Torna a la pregunta'
   decidim:
+    debates:
+      actions:
+        active: Debats actius
+        archive: Arxiva
+        archived: Debats arxivats
+        unarchive: Desarxiva
+      admin:
+        debates:
+          empty: No s'han trobat debats.
     admin:
+      debate_closes:
+        edit:
+          archive: Arxiva aquest debat
+          archive_help: Arxivar aquest debat l'amagarà del llistat principal
+      debates:
+        archive:
+          invalid: There was a problem archiving the debate.
+          success: Debat arxivat.
+        unarchive:
+          invalid: There was a problem unarchiving the debate.
+          success: Debate desarxivat.
       titles:
         results: Resultats
         response_groups: Grups de respostes
