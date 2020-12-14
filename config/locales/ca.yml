@@ -40,19 +40,20 @@ ca:
         unarchive: Desarxiva
       admin:
         debates:
+          archive:
+            invalid: Hi ha hagut un error a l'hora d'arxivar el debat.
+            success: Debat arxivat.
           empty: No s'han trobat debats.
+          unarchive:
+            invalid: Hi ha hagut un error a l'hora de desarxivar el debat.
+            success: Debat desarxivat.
+        debate_closes:
+          edit:
+            archive: Arxiva aquest debat
+            archive_help: Arxivar aquest debat l'amagarà del llistat principal
+        exports:
+          comments: Comentaris
     admin:
-      debate_closes:
-        edit:
-          archive: Arxiva aquest debat
-          archive_help: Arxivar aquest debat l'amagarà del llistat principal
-      debates:
-        archive:
-          invalid: There was a problem archiving the debate.
-          success: Debat arxivat.
-        unarchive:
-          invalid: There was a problem unarchiving the debate.
-          success: Debate desarxivat.
       titles:
         results: Resultats
         response_groups: Grups de respostes

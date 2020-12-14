@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Platoniq/decidim
-  revision: 3dc07837d9716dff12ad9fa4918f470dd5e89c4d
+  revision: 2650bb83b1614be670e55538d223cc5f39b51dab
   branch: temp/0.23-stable
   specs:
     decidim (0.23.1)
@@ -308,7 +308,7 @@ GEM
       actionpack (>= 3.0)
       cells (>= 4.1.6, < 5.0.0)
     charlock_holmes (0.7.7)
-    chef-utils (16.7.61)
+    chef-utils (16.8.14)
     childprocess (3.0.0)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
@@ -545,8 +545,9 @@ GEM
       rack (>= 1.6.2, < 3)
     omniauth-facebook (5.0.0)
       omniauth-oauth2 (~> 1.2)
-    omniauth-google-oauth2 (0.8.0)
+    omniauth-google-oauth2 (0.8.1)
       jwt (>= 2.0)
+      oauth2 (~> 1.1)
       omniauth (>= 1.1.1)
       omniauth-oauth2 (>= 1.6)
     omniauth-oauth (1.1.0)

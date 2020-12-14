@@ -40,19 +40,20 @@ es:
         unarchive: Desarchivar
       admin:
         debates:
+          archive:
+            invalid: Ha habido un problema archivando el debate.
+            success: Debate archivado.
           empty: No se han encontrado debates.
+          unarchive:
+            invalid: Ha habido un problema desarchivando el debate.
+            success: Debate desarchivado.
+        debate_closes:
+          edit:
+            archive: Archiva este debate
+            archive_help: Archivar este debate lo esconderá del listado principal
+        exports:
+          comments: Comentarios
     admin:
-      debate_closes:
-        edit:
-          archive: Archiva este debate
-          archive_help: Archivar este debate lo esconderà del listado principal
-      debates:
-        archive:
-          invalid: There was a problem archiving the debate.
-          success: Debate archivado.
-        unarchive:
-          invalid: There was a problem unarchiving the debate.
-          success: Debate desarchivado.
       titles:
         results: Resultados
         response_groups: Grupos de respuestas
