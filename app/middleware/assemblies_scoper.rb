@@ -14,16 +14,12 @@ class AssembliesScoper
     when "assemblies"
       Decidim::Assembly.scope_to_types(@types, :exclude)
       # redirect to organs if matches the type
-      if @types.include?(assembly&.decidim_assemblies_type_id)
-        return [301, { "Location" => location("organs"), "Content-Type" => "text/html", "Content-Length" => "0" }, []]
-      end
+      return [301, { "Location" => location("organs"), "Content-Type" => "text/html", "Content-Length" => "0" }, []] if @types.include?(assembly&.decidim_assemblies_type_id)
 
     when "organs"
-      Decidim::Assembly.scope_to_types(@types, :include) 
+      Decidim::Assembly.scope_to_types(@types, :include)
       # redirect to assemblies if not matches the type
-      if @types.exclude?(assembly&.decidim_assemblies_type_id)
-        return [301, { "Location" => location("assemblies"), "Content-Type" => "text/html", "Content-Length" => "0" }, []]
-      end
+      return [301, { "Location" => location("assemblies"), "Content-Type" => "text/html", "Content-Length" => "0" }, []] if @types.exclude?(assembly&.decidim_assemblies_type_id)
     end
     Decidim::Assembly.scope_to_types(nil, nil)
     @app.call(env)

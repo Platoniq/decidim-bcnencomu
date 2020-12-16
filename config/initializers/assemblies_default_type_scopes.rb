@@ -3,7 +3,6 @@
 Rails.configuration.middleware.use AssembliesScoper
 Rails.application.config.to_prepare do
   Decidim::Assembly.class_eval do
-
     class << self
       attr_accessor :scope_types, :scope_types_mode
 
