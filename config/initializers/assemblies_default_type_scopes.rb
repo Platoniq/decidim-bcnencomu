@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
+# this middleware will detect by the URL if all calls to Assembly need to skip (or include) certain types
 Rails.configuration.middleware.use AssembliesScoper
+
+# tampers the Assembly model to put a default scope in all queries
+# if configured previously
 Rails.application.config.to_prepare do
   Decidim::Assembly.class_eval do
     class << self
@@ -22,5 +26,16 @@ Rails.application.config.to_prepare do
         where("decidim_assemblies_type_id IN (?)", scope_types)
       end
     end
+  end
+end
+
+Rails.application.config.after_initialize do
+  # Creates a new menu next to Assemblies for /organs
+  Decidim.menu :menu do |menu|
+    menu.item "Organs",
+              Rails.application.routes.url_helpers.organs_path,
+              position: 2.4,
+              if: Decidim::Assembly.unscoped.where(organization: current_organization, assembly_type: [4]).published.any?,
+              active: :inclusive
   end
 end

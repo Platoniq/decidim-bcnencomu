@@ -24,8 +24,9 @@ Rails.application.routes.draw do
              }
 
   mount Decidim::Core::Engine => "/"
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  # recreates the /assemblies route for /organs, reusing the same controllers
+  # content will be differentiatied automatically by scoping selectively all SQL queries depending on the URL prefix
   resources :organs, only: [:index, :show], param: :slug, path: "organs", controller: "decidim/assemblies/assemblies" do
     resources :assembly_members, only: :index, path: "members"
     resource :assembly_widget, only: :show, path: "embed"
