@@ -25,4 +25,19 @@ Rails.application.routes.draw do
 
   mount Decidim::Core::Engine => "/"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :organs, only: [:index, :show], param: :slug, path: "organs", controller: "decidim/assemblies/assemblies" do
+    resources :assembly_members, only: :index, path: "members"
+    resource :assembly_widget, only: :show, path: "embed"
+  end
+
+  scope "/organs/:assembly_slug/f/:component_id" do
+    Decidim.component_manifests.each do |manifest|
+      next unless manifest.engine
+
+      constraints Decidim::Assemblies::CurrentComponent.new(manifest) do
+        mount manifest.engine, at: "/", as: "decidim_assembly_#{manifest.name}"
+      end
+    end
+  end
 end
