@@ -1,6 +1,6 @@
 ca:
   bcnencomu:
-    assemblies_types:
+    alternative_assembly_types:
       organs: Òrgans
   activemodel:
     attributes:

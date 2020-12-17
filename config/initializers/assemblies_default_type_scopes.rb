@@ -31,11 +31,11 @@ end
 
 Rails.application.config.after_initialize do
   # Creates a new menu next to Assemblies for every type configured
-  AssembliesScoper.assemblies_types.each do |item|
+  AssembliesScoper.alternative_assembly_types.each do |item|
     Decidim.menu :menu do |menu|
-      menu.item I18n.t(item[:key], scope: "bcnencomu.assemblies_types"),
+      menu.item I18n.t(item[:key], scope: "bcnencomu.alternative_assembly_types"),
                 Rails.application.routes.url_helpers.send("#{item[:key]}_path"),
-                position: item[:position],
+                position: item[:position_in_menu],
                 if: Decidim::Assembly.unscoped.where(organization: current_organization, assembly_type: item[:types]).published.any?,
                 active: :inclusive
     end

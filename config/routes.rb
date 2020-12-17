@@ -27,8 +27,8 @@ Rails.application.routes.draw do
 
   # recreates the /assemblies route for /any-alternative, reusing the same controllers
   # content will be differentiatied automatically by scoping selectively all SQL queries depending on the URL prefix
-  if Rails.application.secrets.assemblies_types
-    Rails.application.secrets.assemblies_types.each do |item|
+  if Rails.application.secrets.alternative_assembly_types
+    Rails.application.secrets.alternative_assembly_types.each do |item|
       resources item[:key], only: [:index, :show], param: :slug, path: item[:key], controller: "decidim/assemblies/assemblies" do
         resources :assembly_members, only: :index, path: "members"
         resource :assembly_widget, only: :show, path: "embed"

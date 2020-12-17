@@ -8,10 +8,10 @@
 # requested assembly belongs into another scope:
 # (e.g `assemblies/alternative-assembly-slug` > `alternative/alternative-assembly-slug`)
 class AssembliesScoper
-  def self.assemblies_types
-    return [] unless Rails.application.secrets.assemblies_types
+  def self.alternative_assembly_types
+    return [] unless Rails.application.secrets.alternative_assembly_types
 
-    Rails.application.secrets.assemblies_types
+    Rails.application.secrets.alternative_assembly_types
   end
 
   def initialize(app)
@@ -48,7 +48,7 @@ class AssembliesScoper
   private
 
   def types
-    AssembliesScoper.assemblies_types.map { |item| [item[:key], item[:types]] }.to_h
+    AssembliesScoper.alternative_assembly_types.map { |item| [item[:key], item[:types]] }.to_h
   end
 
   def type_for(type_id)

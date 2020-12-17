@@ -6,25 +6,24 @@ describe "Visit assemblies", type: :system do
   let(:organization) { create :organization }
   let!(:organs) { create :assemblies_type, id: 17 }
   let!(:type2) { create :assemblies_type }
-  let!(:duplicated_assembly) { create(:assembly, slug: "slug1", assembly_type: organs, organization: organization) }
+  let!(:alternative_assembly) { create(:assembly, slug: "slug1", assembly_type: organs, organization: organization) }
   let!(:assembly) { create(:assembly, slug: "slug3", assembly_type: nil, organization: organization) }
   let!(:assembly2) { create(:assembly, slug: "slug2", assembly_type: type2, organization: organization) }
 
   let(:route) { "organs" } # same as defined in secrets.yml!!
   let(:position) { 2.4 }
   let(:types) { [organs.id] }
-  let(:assemblies_types) do
+  let(:alternative_assembly_types) do
     [
       {
         key: route,
-        position: position,
-        types: types
+        position_in_menu: position,
+        assembly_type_ids: types
       }
     ]
   end
 
   before do
-    # allow(AssembliesScoper).to receive(:assemblies_types).and_return(assemblies_types)
     switch_to_host(organization.host)
   end
 
