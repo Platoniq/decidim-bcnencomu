@@ -36,7 +36,7 @@ Rails.application.config.after_initialize do
       menu.item I18n.t(item[:key], scope: "bcnencomu.alternative_assembly_types"),
                 Rails.application.routes.url_helpers.send("#{item[:key]}_path"),
                 position: item[:position_in_menu],
-                if: Decidim::Assembly.unscoped.where(organization: current_organization, assembly_type: item[:types]).published.any?,
+                if: Decidim::Assembly.unscoped.where(organization: current_organization, assembly_type: item[:assembly_type_ids]).published.any?,
                 active: :inclusive
     end
   end
