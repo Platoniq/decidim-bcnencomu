@@ -1,4 +1,7 @@
 ca:
+  bcnencomu:
+    assemblies_types:
+      organs: Òrgans
   activemodel:
     attributes:
       question:
@@ -32,6 +35,8 @@ ca:
       question_header:
         back_to_question: 'Torna a la pregunta'
   decidim:
+    menu:
+      assemblies: Espais participatius
     debates:
       actions:
         active: Debats actius

@@ -11,20 +11,26 @@ class AssembliesScoper
   end
 
   def call(env)
-    @types = [4]
+    @types = types
+    return @app.call(env) unless @types
+
     request = Rack::Request.new(env)
     @parts = request.path.split("/")
-    assembly_id = current_assembly&.decidim_assemblies_type_id
-    case @parts[1]
-    when "assemblies"
-      Decidim::Assembly.scope_to_types(@types, :exclude)
-      # redirect to organs if matches the type
-      return redirect("organs") if assembly_id && @types.include?(assembly_id)
+    current_assembly = assembly
+    type_id = current_assembly&.decidim_assemblies_type_id
+    type = type_for(type_id)
+    if @parts[1] == "assemblies"
+      # redirect to the duplicated assemblies if matches the type
+      return redirect(type[0]) if @types.values.flatten.include?(type_id)
 
-    when "organs"
-      Decidim::Assembly.scope_to_types(@types, :include)
+      # just exclude all types specified to duplicate
+      Decidim::Assembly.scope_to_types(@types.values.flatten, :exclude)
+    elsif @parts[1] && @types[@parts[1]]
       # redirect to assemblies if not matches the type
-      return redirect("assemblies") if assembly_id && @types.exclude?(assembly_id)
+      return redirect("assemblies") if current_assembly && @types.values.flatten.exclude?(type_id)
+
+      # include only the ones specified
+      Decidim::Assembly.scope_to_types(@types[@parts[1]], :include)
     else
       Decidim::Assembly.scope_to_types(nil, nil)
     end
@@ -33,8 +39,18 @@ class AssembliesScoper
 
   private
 
-  def current_assembly
-    Decidim::Assembly.unscoped.find_by(slug: @parts[2])
+  def types
+    return unless Rails.application.secrets.assemblies_types
+
+    Rails.application.secrets.assemblies_types.map { |item| [item[:key], item[:types]] }.to_h
+  end
+
+  def type_for(type_id)
+    @types.find { |_key, values| values.include?(type_id) }
+  end
+
+  def assembly
+    Decidim::Assembly.unscoped.select(:decidim_assemblies_type_id).find_by(slug: @parts[2])
   end
 
   def redirect(prefix)

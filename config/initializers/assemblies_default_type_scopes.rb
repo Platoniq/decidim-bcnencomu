@@ -31,11 +31,15 @@ end
 
 Rails.application.config.after_initialize do
   # Creates a new menu next to Assemblies for /organs
-  Decidim.menu :menu do |menu|
-    menu.item "Organs",
-              Rails.application.routes.url_helpers.organs_path,
-              position: 2.4,
-              if: Decidim::Assembly.unscoped.where(organization: current_organization, assembly_type: [4]).published.any?,
-              active: :inclusive
+  if Rails.application.secrets.assemblies_types
+    Rails.application.secrets.assemblies_types.each do |item|
+      Decidim.menu :menu do |menu|
+        menu.item I18n.t(item[:key], scope: "bcnencomu.assemblies_types"),
+                  Rails.application.routes.url_helpers.send("#{item[:key]}_path"),
+                  position: item[:position],
+                  if: Decidim::Assembly.unscoped.where(organization: current_organization, assembly_type: item[:types]).published.any?,
+                  active: :inclusive
+      end
+    end
   end
 end
