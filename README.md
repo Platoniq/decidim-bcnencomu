@@ -42,7 +42,7 @@ And these assemblies assigned as follows:
 - Assembly 2 (type: 17)
 - Assembly 3 (no type assigned)
 
-And, finally, let's imagine we have configured that types "Participation(17)" and "Others(9)" should be in a different main menu than the normal "ASSEMBLIES", called for instance "PARTICIPATIVE ASSEMBLIES". 
+And, finally, let's imagine we have configured that types "Participation(17)" and "Others(9)" should be in a different main menu than the normal "ASSEMBLIES", called for instance "PARTICIPATIVE ASSEMBLIES".
 
 Now "Assembly 1" and "Assembly 3" will be listed under the normal "ASSEMBLIES" menu, but "Assembly 2" not.
 
@@ -57,7 +57,7 @@ It is configured via the `secrets.yml` file in a new section `assemblies_types`:
 ```yaml
 default: &default
   assemblies_types:
-    - 
+    -
       key: organs # used to search a I18n key and a route path
       position: 2.6
       types: [17]
