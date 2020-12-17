@@ -36,7 +36,7 @@ ca:
         back_to_question: 'Torna a la pregunta'
   decidim:
     menu:
-      assemblies: Espais participatius
+      assemblies: Espais de participació
     debates:
       actions:
         active: Debats actius
