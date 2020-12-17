@@ -96,11 +96,11 @@ RSpec.configure do |config|
   config.order = :random
 
   config.before do
-    I18n.available_locales = [:en, :es, :pl, :hu, :pt, :de, :fi, :it, :nl]
-    I18n.default_locale = :en
-    I18n.locale = :en
-    Decidim.available_locales = [:en, :es, :pl, :hu, :pt, :de, :fi, :it, :nl]
-    Decidim.default_locale = :en
+    I18n.available_locales = [:es, :ca, :en]
+    I18n.default_locale = :ca
+    I18n.locale = :ca
+    Decidim.available_locales = [:es, :ca]
+    Decidim.default_locale = :ca
     Capybara.server = :puma
   end
 end

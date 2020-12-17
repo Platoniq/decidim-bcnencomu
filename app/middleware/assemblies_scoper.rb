@@ -6,13 +6,19 @@
 #  TODO: configure from secrets.yml
 # Also redirects individual assemblies to the proper url i the slug is under the wrong prefix
 class AssembliesScoper
+  def self.assemblies_types
+    return [] unless Rails.application.secrets.assemblies_types
+
+    Rails.application.secrets.assemblies_types
+  end
+
   def initialize(app)
     @app = app
   end
 
   def call(env)
     @types = types
-    return @app.call(env) unless @types
+    return @app.call(env) if @types.blank?
 
     request = Rack::Request.new(env)
     @parts = request.path.split("/")
@@ -40,9 +46,7 @@ class AssembliesScoper
   private
 
   def types
-    return unless Rails.application.secrets.assemblies_types
-
-    Rails.application.secrets.assemblies_types.map { |item| [item[:key], item[:types]] }.to_h
+    AssembliesScoper.assemblies_types.map { |item| [item[:key], item[:types]] }.to_h
   end
 
   def type_for(type_id)

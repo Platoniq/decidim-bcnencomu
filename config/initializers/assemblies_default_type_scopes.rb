@@ -30,16 +30,14 @@ Rails.application.config.to_prepare do
 end
 
 Rails.application.config.after_initialize do
-  # Creates a new menu next to Assemblies for /organs
-  if Rails.application.secrets.assemblies_types
-    Rails.application.secrets.assemblies_types.each do |item|
-      Decidim.menu :menu do |menu|
-        menu.item I18n.t(item[:key], scope: "bcnencomu.assemblies_types"),
-                  Rails.application.routes.url_helpers.send("#{item[:key]}_path"),
-                  position: item[:position],
-                  if: Decidim::Assembly.unscoped.where(organization: current_organization, assembly_type: item[:types]).published.any?,
-                  active: :inclusive
-      end
+  # Creates a new menu next to Assemblies for every type configured
+  AssembliesScoper.assemblies_types.each do |item|
+    Decidim.menu :menu do |menu|
+      menu.item I18n.t(item[:key], scope: "bcnencomu.assemblies_types"),
+                Rails.application.routes.url_helpers.send("#{item[:key]}_path"),
+                position: item[:position],
+                if: Decidim::Assembly.unscoped.where(organization: current_organization, assembly_type: item[:types]).published.any?,
+                active: :inclusive
     end
   end
 end

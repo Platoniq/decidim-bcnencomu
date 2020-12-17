@@ -10,7 +10,7 @@ module Decidim
     let(:type2) { create :assemblies_type }
     let!(:assembly1) { create(:assembly, slug: "slug1", assembly_type: type1) }
     let!(:assembly2) { create(:assembly, slug: "slug2", assembly_type: type2) }
-    let!(:assembly3) { create(:assembly, slug: "slug2", assembly_type: nil) }
+    let!(:assembly3) { create(:assembly, slug: "slug3", assembly_type: nil) }
 
     it "assemblies have types assigned" do
       expect(assembly1.decidim_assemblies_type_id).to eq(type1.id)
