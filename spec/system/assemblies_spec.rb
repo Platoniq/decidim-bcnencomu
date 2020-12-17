@@ -33,7 +33,7 @@ describe "Visit assemblies", type: :system do
       visit decidim.root_path
     end
 
-    it "shows the normal assembly menu" do
+    it "shows the original assembly menu" do
       within ".main-nav" do
         expect(page).to have_content("Espais participatius")
         expect(page).to have_link(href: "/assemblies")
@@ -47,7 +47,7 @@ describe "Visit assemblies", type: :system do
       end
     end
 
-    context "and navigating to normal assemblies" do
+    context "and navigating to original assemblies" do
       before do
         within ".main-nav" do
           click_link "Espais participatius"
@@ -56,7 +56,7 @@ describe "Visit assemblies", type: :system do
 
       it "shows assemblies without excluded types" do
         within "#parent-assemblies" do
-          expect(page).not_to have_content(duplicated_assembly.title["ca"])
+          expect(page).not_to have_content(alternative_assembly.title["ca"])
           expect(page).to have_content(assembly2.title["ca"])
           expect(page).to have_content(assembly.title["ca"])
         end
@@ -67,7 +67,7 @@ describe "Visit assemblies", type: :system do
       end
     end
 
-    context "and navigating to duplicated assemblies" do
+    context "and navigating to alternative assemblies" do
       before do
         within ".main-nav" do
           click_link "Òrgans"
@@ -76,44 +76,44 @@ describe "Visit assemblies", type: :system do
 
       it "shows assemblies without excluded types" do
         within "#parent-assemblies" do
-          expect(page).to have_content(duplicated_assembly.title["ca"])
+          expect(page).to have_content(alternative_assembly.title["ca"])
           expect(page).not_to have_content(assembly2.title["ca"])
           expect(page).not_to have_content(assembly.title["ca"])
         end
       end
 
-      it "has the duplicated path" do
+      it "has the alternative path" do
         expect(page).to have_current_path organs_path
       end
     end
   end
 
-  context "when accessing normal assemblies with the wrong path" do
+  context "when accessing original assemblies with an alternative path" do
     before do
       visit "/organs/#{assembly2.slug}"
     end
 
-    it "redirects to duplicated" do
+    it "redirects to the original path" do
       expect(page).to have_current_path decidim_assemblies.assembly_path(assembly2.slug)
     end
   end
 
-  context "when accessing duplicated assemblies with the wrong path" do
+  context "when accessing alternative assemblies with the original path" do
     before do
-      visit "/assemblies/#{duplicated_assembly.slug}"
+      visit "/assemblies/#{alternative_assembly.slug}"
     end
 
-    it "redirects to normal" do
-      expect(page).to have_current_path organ_path(duplicated_assembly.slug)
+    it "redirects to the alternative path" do
+      expect(page).to have_current_path organ_path(alternative_assembly.slug)
     end
   end
 
-  context "when accessing non typed assemblies with the wrong path" do
+  context "when accessing non typed assemblies with the alternative path" do
     before do
       visit "/organs/#{assembly.slug}"
     end
 
-    it "redirects to duplicated" do
+    it "redirects to the original path" do
       expect(page).to have_current_path decidim_assemblies.assembly_path(assembly.slug)
     end
   end

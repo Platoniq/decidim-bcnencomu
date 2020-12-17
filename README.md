@@ -27,24 +27,24 @@ You're good to go!
 
 ## The Assembly duplicator hack
 
-PR #15 introduces an experimental feature that allows to duplicate the Assembly module in the menu.
-It uses the Assemblies types to divide the assemblies assigned depending on how it is configured.
+PR #15 introduces an experimental feature that allows to add an alternative Assemblies menu.
+It uses the Assemblies types to divide the assemblies into the original and the different alternative menus.
 
 For instance, imagine you have these assembly types:
 
-- Governance [type ID: 12]
-- Participation [type ID: 17]
-- Others [type ID: 9]
+- Governance [Assembly Type ID: 12]
+- Participation [Assembly Type ID: 17]
+- Others [Assembly Type ID: 9]
 
-And these assemblies assigned as follows:
+And these assemblies with these types assigned:
 
-- Assembly 1 (type: 12)
-- Assembly 2 (type: 17)
-- Assembly 3 (no type assigned)
+- Assembly 1 (Assembly Type ID: 12)
+- Assembly 2 (Assembly Type ID: 17)
+- Assembly 3 (no Assembly Type assigned)
 
-And, finally, let's imagine we have configured that types "Participation(17)" and "Others(9)" should be in a different main menu than the normal "ASSEMBLIES", called for instance "PARTICIPATIVE ASSEMBLIES".
+And, finally, let's imagine we have configured that types "Participation (17)" and "Others (9)" should be in a different main menu than the normal "ASSEMBLIES", called for instance "PARTICIPATIVE ASSEMBLIES".
 
-Now "Assembly 1" and "Assembly 3" will be listed under the normal "ASSEMBLIES" menu, but "Assembly 2" not.
+Now "Assembly 1" and "Assembly 3" will be listed under the normal "ASSEMBLIES" menu, but "Assembly 2" will not.
 
 Then, another menu item will appear next to "ASSEMBLIES" called "PARTICIPATIVE ASSEMBLIES", when clicking on it, the user will see only the assemblies assigned to types 17 and 9, in this case only the "Assembly 2".
 

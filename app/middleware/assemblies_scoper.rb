@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
-# Provides a global scope for the application for knowin when to scope
-# the model Assembly to certain assembly types only
-# Assemblies will be divided in 2, when the URL starts with /assemblies and when start with /organs
-#  TODO: configure from secrets.yml
-# Also redirects individual assemblies to the proper url i the slug is under the wrong prefix
+# Provides a way for the application to scope assemblies depending on their type
+# A url scope will be generated for every alternative assembly type that needs its own
+# section, (e.g `/assemblies` and `/organs`)
+#
+# It also manages redirects for individual assemblies to the proper url path if the
+# requested assembly belongs into another scope:
+# (e.g `assemblies/alternative-assembly-slug` > `alternative/alternative-assembly-slug`)
 class AssembliesScoper
   def self.assemblies_types
     return [] unless Rails.application.secrets.assemblies_types
@@ -26,10 +28,10 @@ class AssembliesScoper
     type_id = current_assembly&.decidim_assemblies_type_id
     type = type_for(type_id)
     if @parts[1] == "assemblies"
-      # redirect to the duplicated assemblies if matches the type
+      # redirect to the alternative assemblies if matches the type
       return redirect(type[0]) if @types.values.flatten.include?(type_id)
 
-      # just exclude all types specified to duplicate
+      # just exclude all types specified as alternative
       Decidim::Assembly.scope_to_types(@types.values.flatten, :exclude)
     elsif @parts[1] && @types[@parts[1]]
       # redirect to assemblies if not matches the type
