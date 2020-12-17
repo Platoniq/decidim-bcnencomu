@@ -43,7 +43,7 @@ module Decidim
       end
 
       it "has a default scope" do
-        expect(Assembly.default_scope).not_to eq(nil)
+        expect(Assembly.default_scope).to be_present
         expect(Assembly.scope_types).to eq([type1.id])
         expect(Assembly.scope_types_mode).to eq(:include)
       end
