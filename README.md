@@ -25,7 +25,7 @@ user.save!
 
 You're good to go!
 
-## The Assembly duplicator hack
+## The Awesome Alternative Assembies Hack
 
 PR #15 introduces an experimental feature that allows to add an alternative Assemblies menu.
 It uses the Assemblies types to divide the assemblies into the original and the different alternative menus.
