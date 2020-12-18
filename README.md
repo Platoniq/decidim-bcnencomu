@@ -25,7 +25,7 @@ user.save!
 
 You're good to go!
 
-## The Assembly duplicator hack
+## The Awesome Alternative Assembies Hack
 
 PR #15 introduces an experimental feature that allows to add an alternative Assemblies menu.
 It uses the Assemblies types to divide the assemblies into the original and the different alternative menus.
@@ -64,6 +64,6 @@ default: &default
 ```
 
 - **alternative_assembly_types**: must be an array in YAML format, each entry will correspond to a new entry in the main Decidim menu next to the "ASSEMBLIES" item.
-- **key**: the identifier for the menu and URL path. For instance, if it is `organs` we will have a new menu entry for the url `<host>/organs` and the name specified in the I18n key ``bcnencomu.alternative_assembly_types.organs`.
-- **position**: Where to place the item in the main menu, the usual "ASSEMBLIES" item have the value `2.5`, lower this number will put it before and vice-versa.
+- **key**: the identifier for the menu and URL path. For instance, if it is `organs` we will have a new menu entry for the url `<host>/organs` and the name specified in the I18n key `bcnencomu.alternative_assembly_types.organs`.
+- **position_in_menu**: Where to place the item in the main menu, the usual "ASSEMBLIES" item have the value `2.5`, lower this number will put it before and vice-versa.
 - **types**: and array of IDs for the model `Decidim::AssembliesType`. All assemblies assigned to this ID will be listed here and not in the normal "ASSEMBLIES" menu.

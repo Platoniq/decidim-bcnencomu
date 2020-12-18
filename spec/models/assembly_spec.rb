@@ -24,9 +24,9 @@ module Decidim
       end
 
       it "has no default scope" do
-        expect(Assembly.default_scope).to eq(nil)
-        expect(Assembly.scope_types).to eq(nil)
-        expect(Assembly.scope_types_mode).to eq(nil)
+        expect(Assembly.default_scope).not_to be_present
+        expect(Assembly.scope_types).not_to be_present
+        expect(Assembly.scope_types_mode).not_to be_present
       end
 
       it "find all assemblies" do
@@ -43,7 +43,7 @@ module Decidim
       end
 
       it "has a default scope" do
-        expect(Assembly.default_scope).not_to eq(nil)
+        expect(Assembly.default_scope).to be_present
         expect(Assembly.scope_types).to eq([type1.id])
         expect(Assembly.scope_types_mode).to eq(:include)
       end
@@ -62,7 +62,7 @@ module Decidim
       end
 
       it "has a default scope" do
-        expect(Assembly.default_scope).not_to eq(nil)
+        expect(Assembly.default_scope).to be_present
         expect(Assembly.scope_types).to eq([type2.id])
         expect(Assembly.scope_types_mode).to eq(:exclude)
       end
