@@ -47,6 +47,15 @@ checksums = [
       "/app/controllers/decidim/consultations/admin/responses_controller.rb" => "b8a63f442dd146f1ea3596d485ea29f7",
       "/app/forms/decidim/consultations/multi_vote_form.rb" => "fc2160f0b5e85c9944d652b568c800f3"
     }
+  },
+  {
+    package: "decidim-assemblies",
+    files: {
+      # just to take into the account if some routes change
+      "/lib/decidim/assemblies/engine.rb" => "99a665d60c949c30a7f127c322dc3de5",
+      "/lib/decidim/assemblies/admin_engine.rb" => "15bfba31a46f70870da42a07b588e59d",
+      "/app/models/decidim/assembly.rb" => "b99256774db6151d5b0e47cacdbea550"
+    }
   }
 ]
 

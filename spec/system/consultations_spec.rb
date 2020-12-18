@@ -22,7 +22,7 @@ describe "Visit the consultations main page", type: :system, perform_enqueued: t
   end
 
   it "renders the consultations page" do
-    expect(page).to have_content("2 CONSULTATIONS")
+    expect(page).to have_content("2 CONSULTES")
   end
 
   context "when visiting a consultation" do
@@ -31,7 +31,7 @@ describe "Visit the consultations main page", type: :system, perform_enqueued: t
     end
 
     it "renders the consultation page" do
-      expect(page).to have_content(consultation.title[:en])
+      expect(page).to have_content(consultation.title["ca"])
     end
   end
 
@@ -41,7 +41,7 @@ describe "Visit the consultations main page", type: :system, perform_enqueued: t
     end
 
     it "renders the question page" do
-      expect(page).to have_content(question.title[:en])
+      expect(page).to have_content(question.title["ca"])
     end
   end
 end
