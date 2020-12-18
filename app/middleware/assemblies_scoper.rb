@@ -19,13 +19,15 @@ class AssembliesScoper
   end
 
   def call(env)
+    Decidim::Assembly.scope_to_types(nil, nil)
     @types = types
-    return @app.call(env) if @types.blank?
+    @organization = env["decidim.current_organization"]
+    @parts = Rack::Request.new(env).path.split("/")
+    @current_assembly = assembly
 
-    request = Rack::Request.new(env)
-    @parts = request.path.split("/")
-    current_assembly = assembly
-    type_id = current_assembly&.decidim_assemblies_type_id
+    return @app.call(env) if out_of_scope?
+
+    type_id = @current_assembly&.decidim_assemblies_type_id
     type = type_for(type_id)
     if @parts[1] == "assemblies"
       # redirect to the alternative assemblies if matches the type
@@ -35,17 +37,20 @@ class AssembliesScoper
       Decidim::Assembly.scope_to_types(@types.values.flatten, :exclude)
     elsif @parts[1] && @types[@parts[1]]
       # redirect to assemblies if not matches the type
-      return redirect("assemblies") if current_assembly && @types.values.flatten.exclude?(type_id)
+      return redirect("assemblies") if @current_assembly && @types.values.flatten.exclude?(type_id)
 
       # include only the ones specified
       Decidim::Assembly.scope_to_types(@types[@parts[1]], :include)
-    else
-      Decidim::Assembly.scope_to_types(nil, nil)
     end
     @app.call(env)
   end
 
   private
+
+  def out_of_scope?
+    return true if @types.blank?
+    return true if @parts[2] && @current_assembly.blank?
+  end
 
   def types
     AssembliesScoper.alternative_assembly_types.map { |item| [item[:key], item[:assembly_type_ids]] }.to_h
@@ -56,7 +61,7 @@ class AssembliesScoper
   end
 
   def assembly
-    Decidim::Assembly.unscoped.select(:decidim_assemblies_type_id).find_by(slug: @parts[2])
+    Decidim::Assembly.unscoped.select(:id, :decidim_assemblies_type_id).find_by(slug: @parts[2], organization: @organization)
   end
 
   def redirect(prefix)

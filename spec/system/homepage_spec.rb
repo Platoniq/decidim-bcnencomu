@@ -17,7 +17,7 @@ describe "Visit the home page", type: :system do
 
     within ".main-nav" do
       expect(page).to have_content("Inici")
-      expect(page).not_to have_content("Espais participatius")
+      expect(page).not_to have_content("Espais de participació")
       expect(page).not_to have_content("Òrgans")
       expect(page).to have_content("Consultes")
     end
@@ -31,7 +31,7 @@ describe "Visit the home page", type: :system do
 
       within ".main-nav" do
         expect(page).to have_content("Inici")
-        expect(page).to have_content("Espais participatius")
+        expect(page).to have_content("Espais de participació")
         expect(page).not_to have_content("Òrgans")
         expect(page).to have_content("Consultes")
       end
@@ -47,7 +47,7 @@ describe "Visit the home page", type: :system do
 
       within ".main-nav" do
         expect(page).to have_content("Inici")
-        expect(page).to have_content("Espais participatius")
+        expect(page).to have_content("Espais de participació")
         expect(page).to have_content("Òrgans")
         expect(page).to have_content("Consultes")
       end

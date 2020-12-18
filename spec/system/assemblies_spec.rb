@@ -34,7 +34,7 @@ describe "Visit assemblies", type: :system do
 
     it "shows the original assembly menu" do
       within ".main-nav" do
-        expect(page).to have_content("Espais participatius")
+        expect(page).to have_content("Espais de participació")
         expect(page).to have_link(href: "/assemblies")
       end
     end
@@ -49,7 +49,7 @@ describe "Visit assemblies", type: :system do
     context "and navigating to original assemblies" do
       before do
         within ".main-nav" do
-          click_link "Espais participatius"
+          click_link "Espais de participació"
         end
       end
 
