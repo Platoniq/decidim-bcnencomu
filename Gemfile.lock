@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Platoniq/decidim
-  revision: 2650bb83b1614be670e55538d223cc5f39b51dab
+  revision: c5be4e36d8f19bdd10ac7f21dd3d2f3061bbbd5e
   branch: temp/0.23-stable
   specs:
     decidim (0.23.1)
@@ -836,4 +836,4 @@ RUBY VERSION
    ruby 2.6.6p146
 
 BUNDLED WITH
-   2.2.0
+   2.2.2
