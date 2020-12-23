@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Platoniq/decidim
-  revision: b12306bf7577922b1da9341d23b2463440efad80
+  revision: c5be4e36d8f19bdd10ac7f21dd3d2f3061bbbd5e
   branch: temp/0.23-stable
   specs:
     decidim (0.23.1)
@@ -383,8 +383,8 @@ GEM
     factory_bot_rails (4.11.1)
       factory_bot (~> 4.11.1)
       railties (>= 3.0.0)
-    faker (2.15.1)
-      i18n (>= 1.6, < 2)
+    faker (1.9.6)
+      i18n (>= 0.7)
     faraday (1.1.0)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
@@ -817,7 +817,7 @@ DEPENDENCIES
   decidim-consultations!
   decidim-dev!
   decidim-direct_verifications (~> 0.22.1)
-  faker (~> 2.14)
+  faker (~> 1.9)
   fog-aws
   health_check
   letter_opener_web (~> 1.3)
