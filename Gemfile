@@ -9,6 +9,7 @@ DECIDIM_VERSION = { git: "https://github.com/Platoniq/decidim", branch: "temp/0.
 gem "decidim", DECIDIM_VERSION
 gem "decidim-consultations", DECIDIM_VERSION
 gem "decidim-direct_verifications", "~> 0.22.1"
+gem "decidim-decidim_awesome", "~> 0.6.1"
 
 gem "bootsnap", "~> 1.4"
 
