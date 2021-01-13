@@ -35,6 +35,11 @@ es:
       question_header:
         back_to_question: 'Volver a la pregunta'
   decidim:
+    components:
+      meetings:
+        settings:
+          global:
+            registration_code_enabled: Código de registro habilitado
     menu:
       assemblies: Espacios de participación
     meetings:
@@ -66,6 +71,8 @@ es:
             user_id: ID de usuaria
             user_name: Nombre
       meetings:
+        online_meeting_link:
+          embedded_videoconference: Videoconferencia insertada
         filters:
           type: Tipo de encuentro
           type_values:
