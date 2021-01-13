@@ -35,6 +35,56 @@ ca:
       question_header:
         back_to_question: 'Torna a la pregunta'
   decidim:
+    meetings:
+      actions:
+        attendance: Control d'assistència
+      admin:
+        meetings:
+          form:
+            disclaimer: "Aclariment: Fent servir un sistema d'inscripcions extern, sou conscients que les organitzadores de %{organization} no són responsables de les dades proveïdes per les usuàries al servei extern."
+            select_a_registration_type: Selecciona un tipus d'inscripció
+            available_slots_help: Deixeu-ho a zero si no hi ha límit de places.
+            registration_url_help: "Enllaç: permet a les participants anar al servei extern d'inscripcions"
+            embedded_videoconference: Videoconferència inserida
+            embedded_videoconference_help: 'Videoconferència inserida: Una sala de videoconferència serà generada i inserida a la pàgina pública de la trobada.'
+            select_a_meeting_type: Selecciona un tipus de trobada 
+            online_meeting_url_help: 'Enllaç: permet a les participants connectar-se directament a la trobada'
+        videoconference_attendance_logs:
+          index:
+            title: Control d'assistència
+      models:
+        videoconference_attendance_log:
+          fields:
+            created_at: Data
+            event: Esdeveniment
+            events:
+              join: Entrada
+              leave: Sortida
+            user_email: Email
+            user_id: ID d'usuària
+            user_name: Nom
+      meetings:
+        filters:
+          type: Tipus de trobada
+          type_values:
+            in_person: Presencial
+            hybrid: Híbrida
+            online: En línia
+            all: Totes
+      registration_type:
+        registration_disabled: Inscripcions deshabilitades
+        on_this_platform: En aquesta plataforma
+        on_different_platform: En un servei extern
+      type_of_meeting:
+        in_person: Presencial
+        hybrid: Híbrida
+        online: En línia
+      videoconference:
+        closed: La videoconferència ha finalitzat.
+        explanation: "Quan cliquis el botó de baix, el navegador et demanarà permisos de micròfon i/o càmera, i t'uniràs a la videoconferència. Fent això, dones permís a %{organization} per registrar la teva assistència a aquesta videoconferència."
+        join: Entrar a la videoconferència
+        title: Videoconferència
+        unavailable: La videoconferència d'aquesta trobada no està disponible en aquest moment.
     menu:
       assemblies: Espais de participació
     debates:
