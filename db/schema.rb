@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_12_175444) do
+ActiveRecord::Schema.define(version: 2021_01_13_114504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -803,6 +803,11 @@ ActiveRecord::Schema.define(version: 2021_01_12_175444) do
     t.string "decidim_author_type"
     t.integer "decidim_user_group_id"
     t.integer "comments_count", default: 0, null: false
+    t.string "online_meeting_url"
+    t.string "type_of_meeting", default: "in_person"
+    t.string "registration_type", default: "registration_disabled", null: false
+    t.string "registration_url"
+    t.boolean "embedded_videoconference", default: false
     t.index ["decidim_author_id", "decidim_author_type"], name: "index_decidim_meetings_meetings_on_author"
     t.index ["decidim_author_id"], name: "index_decidim_meetings_meetings_on_decidim_author_id"
     t.index ["decidim_component_id"], name: "index_decidim_meetings_meetings_on_decidim_component_id"
@@ -841,6 +846,21 @@ ActiveRecord::Schema.define(version: 2021_01_12_175444) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["decidim_meeting_id"], name: "index_decidim_meetings_services_on_decidim_meeting_id"
+  end
+
+  create_table "decidim_meetings_videoconference_attendance_logs", force: :cascade do |t|
+    t.bigint "decidim_meeting_id", null: false
+    t.bigint "decidim_user_id"
+    t.string "room_name", null: false
+    t.string "user_videoconference_id", null: false
+    t.string "user_display_name"
+    t.string "event"
+    t.jsonb "extra", default: {}
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["decidim_meeting_id"], name: "index_decidim_meetings_videoconference_attendance_logs_meeting"
+    t.index ["decidim_user_id"], name: "index_decidim_meetings_videoconference_attendance_logs_user"
+    t.index ["user_videoconference_id"], name: "index_decidim_meetings_videoconference_attendance_logs_id"
   end
 
   create_table "decidim_messaging_conversations", force: :cascade do |t|
