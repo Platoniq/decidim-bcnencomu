@@ -37,6 +37,56 @@ es:
   decidim:
     menu:
       assemblies: Espacios de participación
+    meetings:
+      actions:
+        attendance: Control de asistencia
+      admin:
+        meetings:
+          form:
+            disclaimer: "Aclaración: Usando un sistema de inscripciones externo, sois conscientes que las organizadoras de %{organization} no son responsables de los datos provistos por las usuarias en el servicio externo."
+            select_a_registration_type: Selecciona un tipo de inscripción
+            available_slots_help: Déjalo en cero si no hay límite de plazas.
+            registration_url_help: "Enlace: permite a las participantes ir al servicio externo de inscripciones"
+            embedded_videoconference: Videoconferencia insertada
+            embedded_videoconference_help: 'Videoconferencia insertada: Una sala de videoconferencia será generada e insertada en la página pública del encuentro.'
+            select_a_meeting_type: Selecciona un tipo de encuentro 
+            online_meeting_url_help: 'Enlace: permite a las participantes connectar-se directament a la encuentro'
+        videoconference_attendance_logs:
+          index:
+            title: Control de asistencia
+      models:
+        videoconference_attendance_log:
+          fields:
+            created_at: Fecha
+            event: Evento
+            events:
+              join: Entrada
+              leave: Salida
+            user_email: Email
+            user_id: ID de usuaria
+            user_name: Nombre
+      meetings:
+        filters:
+          type: Tipo de encuentro
+          type_values:
+            in_person: Presencial
+            hybrid: Híbrida
+            online: En línia
+            all: Totes
+      registration_type:
+        registration_disabled: Inscripciones deshabilitadas
+        on_this_platform: En esta plataforma
+        on_different_platform: En un servicio externo
+      type_of_meeting:
+        in_person: Presencial
+        hybrid: Híbrida
+        online: En línea
+      videoconference:
+        closed: La videoconferencia ha finalizado.
+        explanation: "Cuando hagas click en el botón de abajo, el navegador te pedirá permisos de micrófono y/o cámara, y te unirás a la videoconferencia. Haciendo esto, das permiso a %{organization} para registrar tu assistencia a esta videoconferencia."
+        join: Entrar a la videoconferencia
+        title: Videoconferencia
+        unavailable: La videoconferencia de este encuentro no está disponible en este momento.
     debates:
       actions:
         active: Detabes activos
