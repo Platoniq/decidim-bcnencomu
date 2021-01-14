@@ -19,10 +19,13 @@ class AssembliesScoper
   end
 
   def call(env)
+    @request = Rack::Request.new(env)
+    return @app.call(env) unless @request.get? # only run middleware for GET requests
+
     Decidim::Assembly.scope_to_types(nil, nil)
     @types = types
     @organization = env["decidim.current_organization"]
-    @parts = Rack::Request.new(env).path.split("/")
+    @parts = @request.path.split("/")
     @current_assembly = assembly
 
     return @app.call(env) if out_of_scope?

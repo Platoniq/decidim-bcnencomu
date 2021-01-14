@@ -35,6 +35,11 @@ ca:
       question_header:
         back_to_question: 'Torna a la pregunta'
   decidim:
+    components:
+      meetings:
+        settings:
+          global:
+            registration_code_enabled: Codi de registre habilitat
     meetings:
       actions:
         attendance: Control d'assistència
@@ -64,6 +69,8 @@ ca:
             user_id: ID d'usuària
             user_name: Nom
       meetings:
+        online_meeting_link:
+          embedded_videoconference: Videoconferència inserida
         filters:
           type: Tipus de trobada
           type_values:

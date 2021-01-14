@@ -4,7 +4,8 @@ require "rails_helper"
 
 describe AssembliesScoper do
   let(:app) { ->(env) { [200, env, "app"] } }
-  let(:env) { Rack::MockRequest.env_for("https://#{host}/#{path}?foo=bar", "decidim.current_organization" => organization) }
+  let(:env) { Rack::MockRequest.env_for("https://#{host}/#{path}?foo=bar", method: method, "decidim.current_organization" => organization) }
+  let(:method) { "GET" }
   let(:host) { "city.domain.org" }
   let(:middleware) { described_class.new(app) }
   let(:path) { "some_path" }
@@ -197,6 +198,18 @@ describe AssembliesScoper do
         _code, _new_env = middleware.call(env)
 
         expect(middleware.send(:assembly)).not_to be_present
+      end
+    end
+
+    context "when post request" do
+      let(:path) { "assemblies/#{external_assembly.slug}" }
+      let(:method) { "POST" }
+
+      it "does not redirect" do
+        code, new_env = middleware.call(env)
+
+        expect(new_env["Location"]).not_to be_present
+        expect(code).to eq(200)
       end
     end
   end
