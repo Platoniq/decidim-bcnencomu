@@ -67,6 +67,11 @@
 	    color: $link-color;
 	  }
 	}
+	&_notifications, &_conversations{
+	  .icon {
+			fill: $link-color;
+	  }
+	}
 
 	&_dropmenu {
 		> ul > li > a {
@@ -116,4 +121,8 @@
       }
     }
   }
+}
+
+.logo-wrapper span{
+	color: $link-color;
 }
