@@ -116,6 +116,9 @@ es:
         exports:
           comments: Comentarios
     admin:
+      filters:
+        decidim_assemblies_type_id_eq:
+          label: Tipo de asamblea
       titles:
         results: Resultados
         response_groups: Grupos de respuestas

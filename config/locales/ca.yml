@@ -116,6 +116,9 @@ ca:
         exports:
           comments: Comentaris
     admin:
+      filters:
+        decidim_assemblies_type_id_eq:
+          label: Tipus d'assemblea
       titles:
         results: Resultats
         response_groups: Grups de respostes
