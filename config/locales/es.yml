@@ -1,64 +1,200 @@
+---
 es:
-  bcnencomu:
-    alternative_assembly_types:
-      organs: Órganos
   activemodel:
     attributes:
       question:
-        max_votes: 'Número máximo de votos'
-        min_votes: 'Número mínimo de votos, o número de suplentes si hay alguno'
+        max_votes: Número máximo de votos
+        min_votes: Número mínimo de votos, o número de suplentes si hay alguno
     errors:
       models:
         question:
           attributes:
             max_votes:
-              lower_than_min: 'El número máximo de respuestas debe ser superior al mínimo'
+              lower_than_min: El número máximo de respuestas debe ser superior al
+                mínimo
   activerecord:
     errors:
       models:
         decidim/consultations/vote:
           attributes:
             question:
-              invalid_num_votes: 'El número de votos es inválido'
-  devise:
-    mailer:
-      invitation_instructions:
-        accept_until: Esta invitación te dará acceso a la web y caducará el día %{due_date}.
-        someone_invited_you: Has sido invitado/a a participar en la consulta de posibles acuerdos de gobierno de %{application}. Puedes aceptar a través del siguiente enlace.
-    shared:
-      links:
-        activate_password: ¿Todavía no has activado tu cuenta? Crea una contraseña aquí.
-  layouts:
-    decidim:
-      question_components:
-        question_menu_info: Más información
-      question_header:
-        back_to_question: 'Volver a la pregunta'
+              invalid_num_votes: El número de votos es inválido
+  bcnencomu:
+    alternative_assembly_types:
+      organs: Órganos
   decidim:
+    admin:
+      actions:
+        back_to_responses: Volver a las respuestas
+        new_response_group: Nuevo grupo
+        response_groups: Administra grupos de respuestas
+      consultations:
+        results:
+          not_visible: Los resultados seran visibles cuando acabe la consulta
+          participants: "%{count} participantes"
+          total_votes: 'Total: %{count} votos'
+      filters:
+        decidim_assemblies_type_id_eq:
+          label: Tipo de asamblea
+      menu:
+        consultations_submenu:
+          results: Resultados
+        questions_submenu:
+          configuration: Configuración
+      models:
+        response:
+          fields:
+            response_group: Grup
+      question_configuration:
+        disable_external_voting: Por favor, desactiva la votación externa antes de
+          acceder a esta sección
+        form:
+          help: Configura la multi-respuesta incrementando el número máximo de respuestas
+            que un participante puede escoger. El valor por defecto es 1, lo que significa
+            que sólo se puede escoger una respuesta.
+          title: Configuración avanzada
+      response_groups:
+        help: Utiliza los grupos para hacer paquetes de las multiples opciones de
+          respuesta.
+      responses:
+        results:
+          not_visible: Los resultados seran visibles cuando acabe la consulta
+          total_votes: 'Total: %{count} votos'
+      titles:
+        response_groups: Grupos de respuestas
+        results: Resultados
+    authorization_handlers:
+      direct_verifications:
+        explanation: Verificación directa para el censo general
+        name: Censo general
+      direct_verifications_activistes:
+        explanation: Censo de actvistas
+        name: Activistas de BCNenComú
+      direct_verifications_andreu:
+        explanation: Verificación directa para el censo de Sant Andreu
+        name: Sant Andreu
+      direct_verifications_barris:
+        explanation: Verificación directa para el censo de Nou Barris
+        name: Nou Barris
+      direct_verifications_corts:
+        explanation: Verificación directa para el censo de Les Corts
+        name: Les Corts
+      direct_verifications_eixample:
+        explanation: Verificación directa para el censo de L'Eixample
+        name: L'Eixample
+      direct_verifications_gracia:
+        explanation: Verificación directa para el censo de Gràcia
+        name: Gràcia
+      direct_verifications_horta:
+        explanation: Verificación directa para el censo de Horta - Guinardó
+        name: Horta - Guinardó
+      direct_verifications_marti:
+        explanation: Verificación directa para el censo de Sant Martí
+        name: Sant Martí
+      direct_verifications_sants:
+        explanation: Verificación directa para el censo de Sants - Montjuïc
+        name: Sants - Montjuïc
+      direct_verifications_sarria:
+        explanation: Verificación directa para el censo de Sarrià - Sant Gervasi
+        name: Sarrià - Sant Gervasi
+      direct_verifications_vella:
+        explanation: Verificación directa para el censo de Ciutat Vella
+        name: Ciutat Vella
     components:
       meetings:
         settings:
           global:
             registration_code_enabled: Código de registro habilitado
-    menu:
-      assemblies: Espacios de participación
+    consultations:
+      highlighted_questions:
+        title: Pregunta
+      question:
+        take_part: Votar
+      question_multiple_votes:
+        results_rules:
+          minimum_votes_per_user:
+            description: Los participantes podían distribuir %{votes} votos entre
+              las distintas opciones para escojer suplentes.
+          title: En esta pregunta se podían seleccionar múltiples opciones
+          total_participants: Un total de %{count} personas han participado en la
+            votación.
+          vote_limit:
+            description: Los participantes podían votar hasta a un máximo de %{limit}
+              opciones (incluyendo suplentes).
+        voting_rules:
+          min_max_equals: Los participantes deben usar todos los votos disponibles,
+            un total de %{total}, excepto si se vota en blanco.
+          minimum_votes_per_suplent:
+            description: De estos, %{votes} votos debes usarlos para escojer suplentes.
+          minimum_votes_per_user:
+            description: Debes votar un mímino de %{votes} opciones.
+          title: 'La votación está sujeta a les siguientes reglas:'
+          vote_limit:
+            description: Puedes votar hasta a un máximo de %{limit} opciones.
+            left: Te quedan
+            votes: Votos
+      question_votes:
+        create:
+          error: Han ocurrido errores al votar la pregunta. Recuerda que necesitas
+            estar autentificado.
+          success: Podrás cambiarlo hasta que finalice la votación y sólo quedará
+            registrado el último voto emitido.
+          title_error: Atención!
+          title_success: Tu voto ha quedado registrado.
+    debates:
+      actions:
+        active: Detabes activos
+        archive: Archivar
+        archived: Debates archivados
+        unarchive: Desarchivar
+      admin:
+        debate_closes:
+          edit:
+            archive: Archiva este debate
+            archive_help: Archivar este debate lo esconderá del listado principal
+        debates:
+          archive:
+            invalid: Ha habido un problema archivando el debate.
+            success: Debate archivado.
+          empty: No se han encontrado debates.
+          unarchive:
+            invalid: Ha habido un problema desarchivando el debate.
+            success: Debate desarchivado.
+        exports:
+          comments: Comentarios
     meetings:
       actions:
         attendance: Control de asistencia
       admin:
         meetings:
           form:
-            disclaimer: "Aclaración: Usando un sistema de inscripciones externo, sois conscientes que las organizadoras de %{organization} no son responsables de los datos provistos por las usuarias en el servicio externo."
-            select_a_registration_type: Selecciona un tipo de inscripción
             available_slots_help: Déjalo en cero si no hay límite de plazas.
-            registration_url_help: "Enlace: permite a las participantes ir al servicio externo de inscripciones"
+            disclaimer: 'Aclaración: Usando un sistema de inscripciones externo, sois
+              conscientes que las organizadoras de %{organization} no son responsables
+              de los datos provistos por las usuarias en el servicio externo.'
             embedded_videoconference: Videoconferencia insertada
-            embedded_videoconference_help: 'Videoconferencia insertada: Una sala de videoconferencia será generada e insertada en la página pública del encuentro.'
-            select_a_meeting_type: Selecciona un tipo de encuentro 
-            online_meeting_url_help: 'Enlace: permite a las participantes connectar-se directament a la encuentro'
+            embedded_videoconference_help: 'Videoconferencia insertada: Una sala de
+              videoconferencia será generada e insertada en la página pública del
+              encuentro.'
+            online_meeting_url_help: 'Enlace: permite a las participantes connectar-se
+              directament a la encuentro'
+            registration_url_help: 'Enlace: permite a las participantes ir al servicio
+              externo de inscripciones'
+            select_a_meeting_type: Selecciona un tipo de encuentro
+            select_a_registration_type: Selecciona un tipo de inscripción
         videoconference_attendance_logs:
           index:
             title: Control de asistencia
+      meetings:
+        filters:
+          type: Tipo de encuentro
+          type_values:
+            all: Totes
+            hybrid: Híbrida
+            in_person: Presencial
+            online: En línia
+        online_meeting_link:
+          embedded_videoconference: Videoconferencia insertada
       models:
         videoconference_attendance_log:
           fields:
@@ -70,154 +206,26 @@ es:
             user_email: Email
             user_id: ID de usuaria
             user_name: Nombre
-      meetings:
-        online_meeting_link:
-          embedded_videoconference: Videoconferencia insertada
-        filters:
-          type: Tipo de encuentro
-          type_values:
-            in_person: Presencial
-            hybrid: Híbrida
-            online: En línia
-            all: Totes
       registration_type:
-        registration_disabled: Inscripciones deshabilitadas
-        on_this_platform: En esta plataforma
         on_different_platform: En un servicio externo
+        on_this_platform: En esta plataforma
+        registration_disabled: Inscripciones deshabilitadas
       type_of_meeting:
-        in_person: Presencial
         hybrid: Híbrida
+        in_person: Presencial
         online: En línea
       videoconference:
         closed: La videoconferencia ha finalizado.
-        explanation: "Cuando hagas click en el botón de abajo, el navegador te pedirá permisos de micrófono y/o cámara, y te unirás a la videoconferencia. Haciendo esto, das permiso a %{organization} para registrar tu assistencia a esta videoconferencia."
+        explanation: Cuando hagas click en el botón de abajo, el navegador te pedirá
+          permisos de micrófono y/o cámara, y te unirás a la videoconferencia. Haciendo
+          esto, das permiso a %{organization} para registrar tu assistencia a esta
+          videoconferencia.
         join: Entrar a la videoconferencia
         title: Videoconferencia
-        unavailable: La videoconferencia de este encuentro no está disponible en este momento.
-    debates:
-      actions:
-        active: Detabes activos
-        archive: Archivar
-        archived: Debates archivados
-        unarchive: Desarchivar
-      admin:
-        debates:
-          archive:
-            invalid: Ha habido un problema archivando el debate.
-            success: Debate archivado.
-          empty: No se han encontrado debates.
-          unarchive:
-            invalid: Ha habido un problema desarchivando el debate.
-            success: Debate desarchivado.
-        debate_closes:
-          edit:
-            archive: Archiva este debate
-            archive_help: Archivar este debate lo esconderá del listado principal
-        exports:
-          comments: Comentarios
-    admin:
-      filters:
-        decidim_assemblies_type_id_eq:
-          label: Tipo de asamblea
-      titles:
-        results: Resultados
-        response_groups: Grupos de respuestas
-      menu:
-        consultations_submenu:
-          results: Resultados
-        questions_submenu:
-          configuration: Configuración
-      question_configuration:
-        disable_external_voting: 'Por favor, desactiva la votación externa antes de acceder a esta sección'
-        form:
-          title: 'Configuración avanzada'
-          help: 'Configura la multi-respuesta incrementando el número máximo de respuestas que un participante puede escoger. El valor por defecto es 1, lo que significa que sólo se puede escoger una respuesta.'
-      consultations:
-        results:
-          total_votes: 'Total: %{count} votos'
-          participants: '%{count} participantes'
-          not_visible: Los resultados seran visibles cuando acabe la consulta
-      responses:
-        results:
-          total_votes: 'Total: %{count} votos'
-          not_visible: Los resultados seran visibles cuando acabe la consulta
-      response_groups:
-        help: Utiliza los grupos para hacer paquetes de las multiples opciones de respuesta.
-      actions:
-        response_groups: Administra grupos de respuestas
-        new_response_group: Nuevo grupo
-        back_to_responses: Volver a las respuestas
-      models:
-        response:
-          fields:
-            response_group: Grup
-    authorization_handlers:
-      direct_verifications:
-        name: Censo general
-        explanation: Verificación directa para el censo general
-      direct_verifications_vella:
-        name: Ciutat Vella
-        explanation: Verificación directa para el censo de Ciutat Vella
-      direct_verifications_eixample:
-        name: L'Eixample
-        explanation: Verificación directa para el censo de L'Eixample
-      direct_verifications_sants:
-        name: Sants - Montjuïc
-        explanation: Verificación directa para el censo de Sants - Montjuïc
-      direct_verifications_corts:
-        name: Les Corts
-        explanation: Verificación directa para el censo de Les Corts
-      direct_verifications_sarria:
-        name: Sarrià - Sant Gervasi
-        explanation: Verificación directa para el censo de Sarrià - Sant Gervasi
-      direct_verifications_gracia:
-        name: Gràcia
-        explanation: Verificación directa para el censo de Gràcia
-      direct_verifications_horta:
-        name: Horta - Guinardó
-        explanation: Verificación directa para el censo de Horta - Guinardó
-      direct_verifications_barris:
-        name: Nou Barris
-        explanation: Verificación directa para el censo de Nou Barris
-      direct_verifications_andreu:
-        name: Sant Andreu
-        explanation: Verificación directa para el censo de Sant Andreu
-      direct_verifications_marti:
-        name: Sant Martí
-        explanation: Verificación directa para el censo de Sant Martí
-      direct_verifications_activistes:
-        name: Activistas de BCNenComú
-        explanation: Censo de actvistas
-    consultations:
-      question:
-        take_part: Votar
-      question_votes:
-        create:
-          title_error: Atención!
-          error: Han ocurrido errores al votar la pregunta. Recuerda que necesitas estar autentificado.
-          title_success: 'Tu voto ha quedado registrado.'
-          success: 'Podrás cambiarlo hasta que finalice la votación y sólo quedará registrado el último voto emitido.'
-      highlighted_questions:
-        title: Pregunta
-      question_multiple_votes:
-        results_rules:
-          title: 'En esta pregunta se podían seleccionar múltiples opciones'
-          minimum_votes_per_user:
-            description: 'Los participantes podían distribuir %{votes} votos entre las distintas opciones para escojer suplentes.'
-          vote_limit:
-            description: 'Los participantes podían votar hasta a un máximo de %{limit} opciones (incluyendo suplentes).'
-          total_participants: 'Un total de %{count} personas han participado en la votación.'
-        voting_rules:
-          min_max_equals: 'Los participantes deben usar todos los votos disponibles, un total de %{total}, excepto si se vota en blanco.'
-          minimum_votes_per_suplent:
-            description: 'De estos, %{votes} votos debes usarlos para escojer suplentes.'
-          minimum_votes_per_user:
-            description: 'Debes votar un mímino de %{votes} opciones.'
-          title: 'La votación está sujeta a les siguientes reglas:'
-          vote_limit:
-            description: 'Puedes votar hasta a un máximo de %{limit} opciones.'
-            left: 'Te quedan'
-            votes: 'Votos'
+        unavailable: La videoconferencia de este encuentro no está disponible en este
+          momento.
+    menu:
+      assemblies: Espacios de participación
     questions:
       vote_button:
         already_voted: Ya has votado
@@ -225,3 +233,20 @@ es:
       consultations:
         actions:
           vote: Votar
+  devise:
+    mailer:
+      invitation_instructions:
+        accept_until: Esta invitación te dará acceso a la web y caducará el día %{due_date}.
+        someone_invited_you: Has sido invitado/a a participar en la consulta de posibles
+          acuerdos de gobierno de %{application}. Puedes aceptar a través del siguiente
+          enlace.
+    shared:
+      links:
+        activate_password: "¿Todavía no has activado tu cuenta? Crea una contraseña
+          aquí."
+  layouts:
+    decidim:
+      question_components:
+        question_menu_info: Más información
+      question_header:
+        back_to_question: Volver a la pregunta
