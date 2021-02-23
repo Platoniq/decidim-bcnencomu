@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Platoniq/decidim
-  revision: a4c3a319ed4bf39ab386cac004f9805d3e5288d3
+  revision: f752be3f1c408278e9e1eaa9a2e343d9a7bb8bca
   branch: temp/0.23-stable
   specs:
     decidim (0.23.2)
