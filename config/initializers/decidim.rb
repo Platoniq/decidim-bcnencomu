@@ -12,7 +12,7 @@ Decidim.configure do |config|
   config.maps = {
     provider: :here,
     api_key: Rails.application.secrets.maps[:api_key],
-    static: { url: "https://image.maps.cit.api.here.com/mia/1.6/mapview" }
+    static: { url: "https://image.maps.ls.hereapi.com/mia/1.6/mapview" }
   }
 
   # Custom resource reference generator method
