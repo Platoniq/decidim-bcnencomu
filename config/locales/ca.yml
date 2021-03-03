@@ -99,6 +99,9 @@ ca:
       direct_verifications_vella:
         explanation: Verificació directa per al cens de Ciutat Vella
         name: Ciutat Vella
+      direct_verifications_generic_1:
+        explanation: Verificació directa genèrica
+        name: Assamblea DEMO
     components:
       meetings:
         settings:
