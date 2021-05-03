@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
 # Custom consultation rules
-
+# rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/PerceivedComplexity:
 Rails.application.config.to_prepare do
   # /app/helpers/decidim/consultations/questions_helper.rb
   # hide buttons if no next
   Decidim::Consultations::QuestionsHelper.class_eval do
     def display_next_previous_button(direction, optional_classes = "")
-      css = "card__button button hollow " + optional_classes
+      css = "card__button button hollow #{optional_classes}"
 
       case direction
       when :previous
@@ -32,11 +33,11 @@ Rails.application.config.to_prepare do
   # Admin check suplent number
   Decidim::Consultations::Response.class_eval do
     def suplent?(lang)
-      title[lang]&.match(/([\-\( ]+)(suplente?)([\-\) ]+)/i)
+      title[lang]&.match(/([\-( ]+)(suplente?)([\-) ]+)/i)
     end
 
     def blanc?(lang)
-      title[lang]&.match(/([\-\( ]+)(blanco?)([\-\) ]+)/i)
+      title[lang]&.match(/([\-( ]+)(blanco?)([\-) ]+)/i)
     end
   end
 
@@ -191,3 +192,5 @@ Rails.application.config.to_prepare do
     end
   end
 end
+# rubocop:enable Metrics/CyclomaticComplexity
+# rubocop:enable Metrics/PerceivedComplexity:

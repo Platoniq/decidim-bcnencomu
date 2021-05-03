@@ -38,6 +38,7 @@ public/uploads
 !.elasticbeanstalk/*.global.yml
 
 .rbenv-vars
+.vscode
 
 spec/decidim_dummy_app
 .rspec-failures

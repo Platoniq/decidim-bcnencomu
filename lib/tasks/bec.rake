@@ -9,7 +9,6 @@ namespace :bec do
   namespace :users do
     desc "Handles BcnEnComu common operations with users"
     task count: :environment do
-      lines = lines
       emails = filter_emails(lines)
       registered = get_registered(emails)
       unregistered = get_unregistered(emails)
@@ -70,9 +69,11 @@ namespace :bec do
     end
 
     def lines
+      return @lines if @lines
+
       file = ARGV[1]
       usage if file.blank?
-      CSV.read(file).pluck(0)
+      @lines = CSV.read(file).pluck(0)
     rescue StandardError => e
       p e.message
       usage

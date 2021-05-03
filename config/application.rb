@@ -20,9 +20,3 @@ module Bcnencomu
     # the framework and any gems in your application.
   end
 end
-
-unless ENV["DISABLE_SENTRY"]
-  Raven.configure do |config|
-    config.dsn = ENV["SENTRY_DSN"]
-  end
-end

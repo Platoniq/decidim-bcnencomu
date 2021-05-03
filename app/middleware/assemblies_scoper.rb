@@ -7,6 +7,9 @@
 # It also manages redirects for individual assemblies to the proper url path if the
 # requested assembly belongs into another scope:
 # (e.g `assemblies/alternative-assembly-slug` > `alternative/alternative-assembly-slug`)
+
+# rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/PerceivedComplexity:
 class AssembliesScoper
   def self.alternative_assembly_types
     return [] unless Rails.application.secrets.alternative_assembly_types
@@ -68,7 +71,7 @@ class AssembliesScoper
   end
 
   def redirect(prefix)
-    [301, { "Location" => location(prefix), "Content-Type" => "text/html", "Content-Length" => "0" }, []]
+    [307, { "Location" => location(prefix), "Content-Type" => "text/html", "Content-Length" => "0" }, []]
   end
 
   def location(prefix)
@@ -77,3 +80,5 @@ class AssembliesScoper
     parts.join("/")
   end
 end
+# rubocop:enable Metrics/CyclomaticComplexity
+# rubocop:enable Metrics/PerceivedComplexity:
