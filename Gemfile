@@ -4,25 +4,24 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { git: "https://github.com/Platoniq/decidim", branch: "temp/0.23-stable" }.freeze
+DECIDIM_VERSION = { git: "https://github.com/Platoniq/decidim", branch: "temp/0.24" }.freeze
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-consultations", DECIDIM_VERSION
-gem "decidim-decidim_awesome", "~> 0.6.1"
+gem "decidim-decidim_awesome", "~> 0.7.0"
 gem "decidim-direct_verifications", "~> 0.22.1"
 
 gem "bootsnap", "~> 1.4"
+gem "health_check"
+gem "sentry-rails"
+gem "sentry-ruby"
 
-gem "puma", "~> 4.3.5"
+gem "puma", ">= 5.0.0"
 gem "uglifier", "~> 4.1"
 
-gem "faker", "~> 1.9"
-gem "health_check"
+gem "faker", "~> 2.14"
 gem "rspec"
-
-gem "sentry-raven"
-gem "sidekiq", "~> 5.2"
-gem "sidekiq-cron"
+gem "rubocop-faker"
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
@@ -40,4 +39,6 @@ end
 
 group :production do
   gem "fog-aws"
+  gem "sidekiq", "~> 6.0"
+  gem "sidekiq-cron"
 end
