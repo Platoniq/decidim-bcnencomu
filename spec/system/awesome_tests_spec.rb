@@ -34,7 +34,7 @@ describe "Custom styles", type: :system do
     end
 
     it "css is not applyied" do
-      expect(page.execute_script("return window.getComputedStyle($('body')[0]).backgroundColor")).to eq("rgb(247, 255, 247)")
+      expect(page.execute_script("return window.getComputedStyle($('body')[0]).backgroundColor")).to eq("rgb(250, 250, 250)")
     end
   end
 
@@ -83,7 +83,7 @@ describe "Custom styles", type: :system do
 
       context "and page matches the scope" do
         before do
-          click_link "Processes"
+          click_link "Processos"
         end
 
         it_behaves_like "extra css is added"
