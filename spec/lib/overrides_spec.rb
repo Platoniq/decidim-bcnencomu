@@ -11,7 +11,6 @@ checksums = [
     files: {
       # layouts
       "/app/views/layouts/decidim/_head_extra.html.erb" => "1b8237357754cf519f4e418135f78440",
-      "/app/views/layouts/decidim/_main_footer.html.erb" => "995cddce875d4a8b49a9997526145799",
       "/app/views/layouts/decidim/mailer.html.erb" => "5bbe335c1dfd02f8448af287328a49dc",
       # devise
       "/app/views/decidim/devise/sessions/new.html.erb" => "1da8569a34bcd014ffb5323c96391837"
@@ -41,7 +40,7 @@ checksums = [
       # assets
       "/app/assets/javascripts/decidim/consultations/utils_multiple.js" => "1fa33123c28b00e571a6f7702e8c0d2d",
       # classes in initializers/custom_consultations.rb
-      "/app/helpers/decidim/consultations/questions_helper.rb" => "9775042c1648009e43a05d3276bf53ff",
+      "/app/helpers/decidim/consultations/questions_helper.rb" => "4afbf06016579ceb71a5c3ebee458a8b",
       "/app/models/decidim/consultations/response.rb" => "e841b88f8e2d70577222be2a97cba442",
       "/app/models/decidim/consultations/question.rb" => "434ba865b6f51d14171aada1c554bcbd",
       "/app/controllers/decidim/consultations/admin/responses_controller.rb" => "b8a63f442dd146f1ea3596d485ea29f7",
@@ -52,9 +51,9 @@ checksums = [
     package: "decidim-assemblies",
     files: {
       # just to take into the account if some routes change
-      "/lib/decidim/assemblies/engine.rb" => "99a665d60c949c30a7f127c322dc3de5",
-      "/lib/decidim/assemblies/admin_engine.rb" => "15bfba31a46f70870da42a07b588e59d",
-      "/app/models/decidim/assembly.rb" => "b99256774db6151d5b0e47cacdbea550",
+      "/lib/decidim/assemblies/engine.rb" => "20d16ed292562a28198c5644426eb5d8",
+      "/lib/decidim/assemblies/admin_engine.rb" => "5cb65ce77bd8bb2508984faa7825326f",
+      "/app/models/decidim/assembly.rb" => "0d9726c3f40c320b02b31f59a70dbf02",
       "/app/views/decidim/assemblies/_filter_by_type.html.erb" => "76988d76b84d96079e6d9e1b252a3fda",
       "/app/views/decidim/assemblies/assemblies/_parent_assemblies.html.erb" => "fd026d4ee40dd1d5ebf8ad9ec5d0dbb4"
     }
