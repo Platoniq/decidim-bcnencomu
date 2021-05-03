@@ -11,8 +11,8 @@ describe AssembliesScoper do
   let(:path) { "some_path" }
   let!(:organization) { create(:organization, host: host) }
   let!(:organization2) { create(:organization, host: "another.host.org") }
-  let(:alternative_type) { create :assemblies_type, organization: organization) }
-  let(:normal_type) { create :assemblies_type, organization: organization) }
+  let(:alternative_type) { create(:assemblies_type, organization: organization) }
+  let(:normal_type) { create(:assemblies_type, organization: organization) }
   let!(:external_assembly) { create(:assembly, slug: "external-slug1", assembly_type: nil, organization: organization2) }
   let!(:external_assembly2) { create(:assembly, slug: "slug2", assembly_type: nil, organization: organization2) }
   let!(:alternative_assembly) { create(:assembly, slug: "slug1", assembly_type: alternative_type, organization: organization) }
