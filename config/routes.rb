@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
+  # override PasswordController to redirect the user to the first consultation if
+  # available
   devise_for :users,
              class_name: "Decidim::User",
              module: :devise,
@@ -20,9 +22,9 @@ Rails.application.routes.draw do
                confirmations: "decidim/devise/confirmations",
                registrations: "decidim/devise/registrations",
                passwords: "passwords",
+               unlocks: "decidim/devise/unlocks",
                omniauth_callbacks: "decidim/devise/omniauth_registrations"
              }
-
   mount Decidim::Core::Engine => "/"
 
   # recreates the /assemblies route for /any-alternative, reusing the same controllers

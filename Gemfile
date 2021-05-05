@@ -10,7 +10,6 @@ gem "decidim", DECIDIM_VERSION
 gem "decidim-consultations", DECIDIM_VERSION
 gem "decidim-decidim_awesome", "~> 0.7.0"
 gem "decidim-direct_verifications", "~> 0.22.1"
-gem "decidim-direct_verifications", "~> 0.22.1"
 gem "decidim-term_customizer", git: "https://github.com/mainio/decidim-module-term_customizer"
 
 gem "bootsnap", "~> 1.4"
