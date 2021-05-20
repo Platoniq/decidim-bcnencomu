@@ -18,5 +18,13 @@ module Bcnencomu
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    # this middleware will detect by the URL if all calls to Assembly need to skip (or include) certain types
+    # this is done here to be sure it is run after the Decidim gem own initializers
+    initializer :scopers do |app|
+      app.config.middleware.insert_after Decidim::StripXForwardedHost, AssembliesScoper
+      # this avoid to trap the error trace when debugging errors
+      Rails.backtrace_cleaner.add_silencer { |line| line =~ /app\/middleware/ }
+    end
   end
 end
