@@ -14,3 +14,4 @@
 //= require activestorage
 //= require decidim
 //= require_tree ./bcnencomu
+//= require network.fearlesscities.com

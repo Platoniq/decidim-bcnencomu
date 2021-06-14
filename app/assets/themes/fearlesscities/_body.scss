@@ -1,0 +1,40 @@
+@import "variables";
+
+body {
+  font-family: 'Lora', 'Poppins', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  font-family: "Lora", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  color: inherit;
+  text-rendering: optimizeLegibility;
+  letter-spacing: 0.5px;
+}
+
+h3.section-heading {
+  color: $fearless-blue;
+}
+
+a, button {
+  font-family: "Poppins Bold", sans-serif;
+}
+
+.extended.home-section {
+  //background-image: image-url("fearlesscities/texture-blue.jpg");
+
+  &:nth-child(2n+1) {
+    //background-image: image-url("fearlesscities/texture-red.jpg");
+  }
+
+  h3 {
+    color: $fearless-blue;
+  }
+}
