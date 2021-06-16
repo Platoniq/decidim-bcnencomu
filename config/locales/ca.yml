@@ -256,3 +256,5 @@ ca:
         question_menu_info: Més informació
       question_header:
         back_to_question: Torna a la pregunta
+    footer:
+      made_by_platoniq: Pàgina feta amb <a target="_blank" href="https://github.com/decidim/decidim">free software</a> per <a target="_blank" href="http://platoniq.net">Platoniq</a>.

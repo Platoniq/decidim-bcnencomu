@@ -253,3 +253,6 @@ es:
         question_menu_info: Más información
       question_header:
         back_to_question: Volver a la pregunta
+      footer:
+        made_by_platoniq: Página hecha con <a target="_blank" href="https://github.com/decidim/decidim">software libre</a> por <a target="_blank" href="http://platoniq.net">Platoniq</a>.
+
