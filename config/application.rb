@@ -24,7 +24,7 @@ module Bcnencomu
     initializer :scopers do |app|
       app.config.middleware.insert_after Decidim::StripXForwardedHost, AssembliesScoper
       # this avoid to trap the error trace when debugging errors
-      Rails.backtrace_cleaner.add_silencer { |line| line =~ /app\/middleware/ }
+      Rails.backtrace_cleaner.add_silencer { |line| line =~ %r{app/middleware} }
     end
   end
 end
