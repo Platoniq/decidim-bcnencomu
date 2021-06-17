@@ -2,8 +2,8 @@
 
 module ApplicationHelper
   def fearlesscities_site?
-    return false unless fearlesscities = Rails.application.secrets.fearlesscities
+    return false unless Rails.application.secrets.fearlesscities
 
-    fearlesscities.include? current_organization&.host&.to_str
+    Rails.application.secrets.fearlesscities.include? current_organization&.host&.to_str
   end
 end
