@@ -250,6 +250,7 @@ ca:
       links:
         activate_password: Encara no has activat el teu compte? Crea una contrasenya
           aqui.
+        sign_in_with_provider: Inicia sessió amb Barcelona En Comú
   layouts:
     decidim:
       question_components:

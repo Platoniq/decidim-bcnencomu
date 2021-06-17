@@ -247,6 +247,7 @@ es:
       links:
         activate_password: "¿Todavía no has activado tu cuenta? Crea una contraseña
           aquí."
+        sign_in_with_provider: Inicia sessión con Barcelona En Comú
   layouts:
     decidim:
       question_components:
