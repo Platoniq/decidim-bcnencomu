@@ -13,8 +13,11 @@ a.hero-cta.button {
 }
 
 a.button.hollow {
+  font-family: "Poppins Bold";
   border-radius: 10em;
   border: 1px solid $fearless-black;
+  color: $fearless-red;
+
 
   &:hover {
     background-color: $fearless-red;
