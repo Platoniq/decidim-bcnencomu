@@ -16,6 +16,14 @@ $alert-rgb: 245, 68, 51;
 
 // Variables
 
+$hue: (
+  primary: hue($primary),
+  secondary: hue($secondary),
+  success: hue($success),
+  warning: hue($warning),
+  alert: hue($alert),
+);
+
 :root {
   --primary: #{$primary};
   --primary-rgb: #{$primary-rgb};
@@ -27,6 +35,31 @@ $alert-rgb: 245, 68, 51;
   --warning-rgb: #{$warning-rgb};
   --alert: #{$alert};
   --alert-rgb: #{$alert-rgb};
+}
+
+.callout.primary {
+  border-left: none;
+  background-color: hsl(map-get($hue, primary), 60, 90);
+}
+
+.callout.secondary {
+  border-left: none;
+  background-color: hsl(map-get($hue, secondary), 60, 90);
+}
+
+.callout.success {
+  border-left: none;
+  background-color: hsl(map-get($hue, success), 60, 90);
+}
+
+.callout.warning {
+  border-left: none;
+  background-color: hsl(map-get($hue, warning), 60, 90);
+}
+
+.callout.alert {
+  border-left: none;
+  background-color: hsl(map-get($hue, alert), 60, 90);
 }
 
 @import "./fonts";

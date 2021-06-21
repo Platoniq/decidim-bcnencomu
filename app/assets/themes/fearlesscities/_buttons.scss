@@ -1,7 +1,7 @@
 @import "variables";
 
 a.hero-cta.button {
-  font-family: "Poppins Bold";
+  font-family: "Poppins Bold", sans-serif;
   background-color: $fearless-red;
   border: 1px solid $fearless-black;
   border-radius: 10em;
@@ -13,7 +13,7 @@ a.hero-cta.button {
 }
 
 a.button.hollow {
-  font-family: "Poppins Bold";
+  font-family: "Poppins Bold", sans-serif;
   border-radius: 10em;
   border: 1px solid $fearless-black;
   color: $fearless-red;

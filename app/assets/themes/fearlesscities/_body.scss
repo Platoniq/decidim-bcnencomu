@@ -11,7 +11,7 @@ h3, .h3,
 h4, .h4,
 h5, .h5,
 h6, .h6 {
-  font-family: "Lora", sans-serif;
+  font-family: "Poppins Bold", sans-serif;
   font-style: normal;
   font-weight: normal;
   color: inherit;
@@ -19,11 +19,18 @@ h6, .h6 {
   letter-spacing: 0.5px;
 }
 
-h3.section-heading {
+.section-heading {
   color: $fearless-blue;
+
+  &:before {
+    background-color: $fearless-blue;
+    height: 1em;
+    width: 1em;
+    border-radius: 50%;
+  }
 }
 
-a, button {
+a, button, .section-heading, .mini-title, .card-data, .definition-data__title {
   font-family: "Poppins Bold", sans-serif;
 }
 
