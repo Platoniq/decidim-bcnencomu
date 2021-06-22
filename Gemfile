@@ -7,6 +7,7 @@ ruby RUBY_VERSION
 DECIDIM_VERSION = { git: "https://github.com/Platoniq/decidim", branch: "temp/0.24" }.freeze
 
 gem "decidim", DECIDIM_VERSION
+gem "decidim-alternative_landing", git: "https://github.com/Platoniq/decidim-module-alternative_landing"
 gem "decidim-consultations", DECIDIM_VERSION
 gem "decidim-decidim_awesome", git: "https://github.com/Platoniq/decidim-module-decidim_awesome"
 gem "decidim-direct_verifications", "~> 0.22.1"

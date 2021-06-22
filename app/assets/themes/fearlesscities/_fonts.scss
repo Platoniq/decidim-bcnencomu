@@ -1,0 +1,39 @@
+@font-face {
+  font-family: "Lora";
+  src: url("fearlesscities/Lora-Regular.woff2") format("woff2"), url("fearlesscities/Lora-Regular.woff") format("woff"),
+  url("fearlesscities/Lora-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lora Bold";
+  src: url("fearlesscities/Lora-Bold.woff2") format("woff2"), url("fearlesscities/Lora-Bold.woff") format("woff"),
+  url("fearlesscities/Lora-Bold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("fearlesscities/Poppins-Regular.woff2") format("woff2"), url("fearlesscities/Poppins-Regular.woff") format("woff"),
+  url("fearlesscities/Poppins-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins Bold";
+  src: url("fearlesscities/Poppins-Bold.woff2") format("woff2"), url("fearlesscities/Poppins-Bold.woff") format("woff"),
+  url("fearlesscities/Poppins-Bold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@mixin font-body() {
+  font-family: "Lora", "Poppins", sans-serif;
+}
