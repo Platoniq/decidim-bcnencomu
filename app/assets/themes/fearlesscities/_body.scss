@@ -27,6 +27,7 @@ h6, .h6 {
     height: 1em;
     width: 1em;
     border-radius: 50%;
+    vertical-align: super;
   }
 }
 
@@ -35,12 +36,6 @@ a, button, .section-heading, .mini-title, .card-data, .definition-data__title {
 }
 
 .extended.home-section {
-  //background-image: image-url("fearlesscities/texture-blue.jpg");
-
-  &:nth-child(2n+1) {
-    //background-image: image-url("fearlesscities/texture-red.jpg");
-  }
-
   h3 {
     color: $fearless-blue;
   }
