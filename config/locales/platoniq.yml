@@ -1,0 +1,24 @@
+ca:
+  platoniq:
+    footer:
+      logo: Platoniq - Creativitat i Democràcia
+      made_with_open_source: Web creada amb <a href="%{repository}" target="_blank">programari lliure</a>
+      text: Fet amb <3 per
+en:
+  platoniq:
+    footer:
+      logo: Platoniq - Creativity and Democracy
+      made_with_open_source: Website made with <a href="%{repository}" target="_blank">free software</a>
+      text: Made with <3 by
+es:
+  platoniq:
+    footer:
+      logo: Platoniq - Creatividad y Democracia
+      made_with_open_source: Web creada con <a href="%{repository}" target="_blank">software libre</a>
+      text: Hecho con <3 por
+nl:
+  platoniq:
+    footer:
+      logo: Platoniq - Creativity and Democracy
+      made_with_open_source: Website gemaakt met <a href="%{repository}" target="_blank">open-source software</a>
+      text: Met <3 gemaakt door
