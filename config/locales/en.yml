@@ -1,6 +1,10 @@
 ---
 en:
-  hello: Hello world
   layouts:
     footer:
       made_by_platoniq: Website made with <a target="_blank" href="https://github.com/decidim/decidim">free software</a> by <a target="_blank" href="http://platoniq.net">Platoniq</a>.
+  devise:
+    shared:
+      links:
+        activate_password: "Account not activated? Create a password here."
+        sign_in_with_provider: Sign in with Barcelona En Comú
