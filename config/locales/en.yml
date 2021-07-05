@@ -8,9 +8,6 @@ en:
       invitation_instructions:
         accept_until: This invitation will give you access to the website and expires %{due_date}.
         someone_invited_you: |
-          [Català]
-          Has estat convidat/ convidada a la plataforma de participació %{application}. Per activar el teu compte i participar, has d'acceptar la invitació a través de l'enllaç següent.
-          
           [Castellano]
           Has sido invitado/invitada a la plataforma de participación %{application}. Para activar tu cuenta y participar, has de aceptar la invitación a través de este enlace.
 
