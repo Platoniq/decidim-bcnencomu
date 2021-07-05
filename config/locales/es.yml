@@ -240,7 +240,16 @@ es:
     mailer:
       invitation_instructions:
         accept_until: Esta invitación te dará acceso a la web y caducará el día %{due_date}.
-        someone_invited_you: Has sido invitado/invitada a la plataforma de participación %{application}. Para activar tu cuenta y participar, has de aceptar la invitación a través de este enlace.
+        someone_invited_you: |
+          [Català]
+          Has estat convidat/ convidada a la plataforma de participació %{application}. Per activar el teu compte i participar, has d'acceptar la invitació a través de l'enllaç següent.
+          
+          [Castellano]
+          Has sido invitado/invitada a la plataforma de participación %{application}. Para activar tu cuenta y participar, has de aceptar la invitación a través de este enlace.
+
+          [English]
+          You have been invited to the Network %{application}. To activate your account and participate, you must accept the invitation via this link.
+        subject: "Invitación: %{application}"
     shared:
       links:
         activate_password: "¿Todavía no has activado tu cuenta? Crea una contraseña

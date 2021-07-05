@@ -243,7 +243,16 @@ ca:
       invitation_instructions:
         accept_until: Aquesta invitació et donarà accés a la web i caducarà el dia
           %{due_date}.
-        someone_invited_you: Has estat convidat/ convidada a la plataforma de participació %{application}. Per activar el teu compte i participar, has d'acceptar la invitació a través de l'enllaç següent.
+        someone_invited_you:  |
+          [Català]
+          Has estat convidat/ convidada a la plataforma de participació %{application}. Per activar el teu compte i participar, has d'acceptar la invitació a través de l'enllaç següent.
+          
+          [Castellano]
+          Has sido invitado/invitada a la plataforma de participación %{application}. Para activar tu cuenta y participar, has de aceptar la invitación a través de este enlace.
+
+          [English]
+          You have been invited to the Network %{application}. To activate your account and participate, you must accept the invitation via this link.
+        subject: "Invitació: %{application}" 
     shared:
       links:
         activate_password: Encara no has activat el teu compte? Crea una contrasenya
