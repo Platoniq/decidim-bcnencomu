@@ -17,8 +17,6 @@
   }
 
   .card__content {
-    text-align: center;
-    margin: auto;
     .card__title.card__link {
       color: $fearless-blue;
     }
@@ -35,5 +33,14 @@
 
   .card__footer {
     border-radius: 0px 0px 16px 16px;
+  }
+}
+
+#highlighted-assemblies {
+  .card {
+    .card__content {
+      text-align: center;
+      margin: auto;
+    }
   }
 }

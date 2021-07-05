@@ -13,7 +13,9 @@ checksums = [
       "/app/views/layouts/decidim/_head_extra.html.erb" => "1b8237357754cf519f4e418135f78440",
       "/app/views/layouts/decidim/mailer.html.erb" => "5bbe335c1dfd02f8448af287328a49dc",
       # devise
-      "/app/views/decidim/devise/sessions/new.html.erb" => "1da8569a34bcd014ffb5323c96391837"
+      "/app/views/decidim/devise/sessions/new.html.erb" => "1da8569a34bcd014ffb5323c96391837",
+      # cells
+      "/app/cells/decidim/tos_page/form.erb" => "2518b45c702590a44e1df5b2eb13d937"
     }
   },
   {

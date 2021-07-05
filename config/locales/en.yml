@@ -4,6 +4,10 @@ en:
     footer:
       made_by_platoniq: Website made with <a target="_blank" href="https://github.com/decidim/decidim">free software</a> by <a target="_blank" href="http://platoniq.net">Platoniq</a>.
   devise:
+    mailer:
+      invitation_instructions:
+        accept_until: This invitation will give you access to the website and expires %{due_date}.
+        someone_invited_you: You have been invited to the Network %{application}. To activate your account and participate, you must accept the invitation via this link.
     shared:
       links:
         activate_password: "Account not activated? Create a password here."
