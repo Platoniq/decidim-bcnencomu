@@ -1,6 +1,6 @@
 Rails.application.config.to_prepare do
   Decidim::Meetings::MeetingsController.class_eval do
-     def default_filter_params
+    def default_filter_params
       {
         search_text: "",
         date: %w(all),
@@ -10,6 +10,6 @@ Rails.application.config.to_prepare do
         origin: default_filter_origin_params,
         type: default_filter_type_params
       }
-    end
+   end
   end
 end

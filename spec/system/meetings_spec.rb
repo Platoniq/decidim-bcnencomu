@@ -1,0 +1,19 @@
+# frozen_string_literal: true
+
+require "rails_helper"
+
+describe "Visit meetings", type: :system do
+  let(:organization) { create :organization }
+  let(:participatory_process) { create :participatory_process, organization: organization }
+  let(:meetings_component) { create :component, manifest_name: :meetings, participatory_space: participatory_process }
+  let!(:past_meeting) { create :meeting, :past, component: meetings_component }
+
+  before do
+    switch_to_host(organization.host)
+    visit main_component_path(meetings_component)
+  end
+
+  it "shows past meetings" do
+    expect(page).to have_content(past_meeting.title["ca"])
+  end
+end
