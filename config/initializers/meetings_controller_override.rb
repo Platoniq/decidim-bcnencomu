@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.config.to_prepare do
   Decidim::Meetings::MeetingsController.class_eval do
     def default_filter_params
@@ -10,6 +12,6 @@ Rails.application.config.to_prepare do
         origin: default_filter_origin_params,
         type: default_filter_type_params
       }
-   end
+    end
   end
 end
