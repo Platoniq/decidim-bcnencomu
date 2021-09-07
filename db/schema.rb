@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_05_115124) do
+ActiveRecord::Schema.define(version: 2021_09_09_123143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -377,6 +377,42 @@ ActiveRecord::Schema.define(version: 2021_05_05_115124) do
     t.datetime "updated_at", null: false
     t.index ["categorizable_type", "categorizable_id"], name: "decidim_categorizations_categorizable_id_and_type"
     t.index ["decidim_category_id"], name: "index_decidim_categorizations_on_decidim_category_id"
+  end
+
+  create_table "decidim_civicrm_contacts", force: :cascade do |t|
+    t.bigint "decidim_organization_id"
+    t.bigint "decidim_user_id"
+    t.integer "civicrm_contact_id", null: false
+    t.jsonb "extra", default: {}
+    t.boolean "marked_for_deletion", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["decidim_organization_id"], name: "index_decidim_civicrm_contacts_on_decidim_organization_id"
+    t.index ["decidim_user_id"], name: "index_decidim_civicrm_contacts_on_decidim_user_id"
+  end
+
+  create_table "decidim_civicrm_group_memberships", force: :cascade do |t|
+    t.bigint "decidim_organization_id"
+    t.bigint "group_id"
+    t.bigint "contact_id"
+    t.boolean "marked_for_deletion", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_id"], name: "index_decidim_civicrm_group_memberships_on_contact_id"
+    t.index ["decidim_organization_id"], name: "index_decidim_civicrm_memberships_on_decidim_organization_id"
+    t.index ["group_id"], name: "index_decidim_civicrm_group_memberships_on_group_id"
+  end
+
+  create_table "decidim_civicrm_groups", force: :cascade do |t|
+    t.bigint "decidim_organization_id"
+    t.integer "civicrm_group_id", null: false
+    t.string "title"
+    t.string "description"
+    t.jsonb "extra", default: {}
+    t.boolean "marked_for_deletion", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["decidim_organization_id"], name: "index_decidim_civicrm_groups_on_decidim_organization_id"
   end
 
   create_table "decidim_coauthorships", force: :cascade do |t|
@@ -1656,6 +1692,12 @@ ActiveRecord::Schema.define(version: 2021_05_05_115124) do
   add_foreign_key "decidim_budgets_orders", "decidim_budgets_budgets"
   add_foreign_key "decidim_budgets_projects", "decidim_budgets_budgets"
   add_foreign_key "decidim_categorizations", "decidim_categories"
+  add_foreign_key "decidim_civicrm_contacts", "decidim_organizations"
+  add_foreign_key "decidim_civicrm_contacts", "decidim_users"
+  add_foreign_key "decidim_civicrm_group_memberships", "decidim_civicrm_contacts", column: "contact_id"
+  add_foreign_key "decidim_civicrm_group_memberships", "decidim_civicrm_groups", column: "group_id"
+  add_foreign_key "decidim_civicrm_group_memberships", "decidim_organizations"
+  add_foreign_key "decidim_civicrm_groups", "decidim_organizations"
   add_foreign_key "decidim_consultations_response_groups", "decidim_consultations_questions", column: "decidim_consultations_questions_id"
   add_foreign_key "decidim_consultations_responses", "decidim_consultations_questions", column: "decidim_consultations_questions_id"
   add_foreign_key "decidim_consultations_responses", "decidim_consultations_response_groups"

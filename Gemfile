@@ -14,6 +14,8 @@ gem "decidim-direct_verifications", "~> 0.22.1"
 gem "decidim-term_customizer", git: "https://github.com/mainio/decidim-module-term_customizer"
 gem "omniauth-decidim", git: "https://github.com/decidim/omniauth-decidim"
 
+gem "decidim-civicrm", path: "../../decidim-civicrm"
+
 gem "bootsnap", "~> 1.4"
 gem "health_check"
 gem "sentry-rails"

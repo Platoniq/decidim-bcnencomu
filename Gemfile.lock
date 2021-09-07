@@ -246,6 +246,14 @@ GIT
       decidim-admin (~> 0.24.0)
       decidim-core (~> 0.24.0)
 
+PATH
+  remote: ../../decidim-civicrm
+  specs:
+    decidim-civicrm (0.24)
+      decidim-admin (~> 0.24)
+      decidim-core (~> 0.24)
+      decidim-verifications (~> 0.24)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -912,6 +920,7 @@ DEPENDENCIES
   byebug (~> 11.0)
   decidim!
   decidim-alternative_landing!
+  decidim-civicrm!
   decidim-consultations!
   decidim-decidim_awesome!
   decidim-dev!
@@ -939,4 +948,4 @@ RUBY VERSION
    ruby 2.7.3p183
 
 BUNDLED WITH
-   2.2.20
+   2.2.26
