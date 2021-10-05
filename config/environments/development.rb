@@ -2,7 +2,7 @@
 
 # Run Sidekiq tasks synchronously so that Sidekiq is not required in Development
 # (from https://developer.workarea.com/articles/run-sidekiq-in-a-local-environment.html)
-require 'sidekiq/testing/inline'
+require "sidekiq/testing/inline"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
