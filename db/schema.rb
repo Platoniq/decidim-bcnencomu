@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_09_123143) do
+ActiveRecord::Schema.define(version: 2021_10_05_164944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -383,6 +383,7 @@ ActiveRecord::Schema.define(version: 2021_09_09_123143) do
     t.bigint "decidim_organization_id"
     t.bigint "decidim_user_id"
     t.integer "civicrm_contact_id", null: false
+    t.integer "civicrm_memberships", default: [], array: true
     t.jsonb "extra", default: {}
     t.boolean "marked_for_deletion", default: false
     t.datetime "created_at", null: false
@@ -406,6 +407,7 @@ ActiveRecord::Schema.define(version: 2021_09_09_123143) do
   create_table "decidim_civicrm_groups", force: :cascade do |t|
     t.bigint "decidim_organization_id"
     t.integer "civicrm_group_id", null: false
+    t.integer "civicrm_member_count", default: 0
     t.string "title"
     t.string "description"
     t.jsonb "extra", default: {}
@@ -413,6 +415,16 @@ ActiveRecord::Schema.define(version: 2021_09_09_123143) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["decidim_organization_id"], name: "index_decidim_civicrm_groups_on_decidim_organization_id"
+  end
+
+  create_table "decidim_civicrm_membership_types", force: :cascade do |t|
+    t.bigint "decidim_organization_id"
+    t.integer "civicrm_membership_type_id", null: false
+    t.string "name", null: false
+    t.boolean "marked_for_deletion", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["decidim_organization_id"], name: "index_decidim_civicrm_membership_types_on_organization"
   end
 
   create_table "decidim_coauthorships", force: :cascade do |t|
@@ -1698,6 +1710,7 @@ ActiveRecord::Schema.define(version: 2021_09_09_123143) do
   add_foreign_key "decidim_civicrm_group_memberships", "decidim_civicrm_groups", column: "group_id"
   add_foreign_key "decidim_civicrm_group_memberships", "decidim_organizations"
   add_foreign_key "decidim_civicrm_groups", "decidim_organizations"
+  add_foreign_key "decidim_civicrm_membership_types", "decidim_organizations"
   add_foreign_key "decidim_consultations_response_groups", "decidim_consultations_questions", column: "decidim_consultations_questions_id"
   add_foreign_key "decidim_consultations_responses", "decidim_consultations_questions", column: "decidim_consultations_questions_id"
   add_foreign_key "decidim_consultations_responses", "decidim_consultations_response_groups"
