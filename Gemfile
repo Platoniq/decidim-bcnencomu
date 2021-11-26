@@ -10,11 +10,11 @@ gem "decidim", DECIDIM_VERSION
 gem "decidim-alternative_landing", git: "https://github.com/Platoniq/decidim-module-alternative_landing"
 gem "decidim-consultations", DECIDIM_VERSION
 
+gem "decidim-civicrm", git: "https://github.com/Platoniq/decidim-module-civicrm", branch: "main"
 gem "decidim-decidim_awesome", "~> 0.7.2"
 gem "decidim-direct_verifications", "~> 0.22.1"
 gem "decidim-term_customizer", git: "https://github.com/mainio/decidim-module-term_customizer"
 gem "omniauth-decidim"
-gem "decidim-civicrm", git: "https://github.com/Platoniq/decidim-module-civicrm", branch: "main"
 
 gem "bootsnap", "~> 1.4"
 gem "health_check"
