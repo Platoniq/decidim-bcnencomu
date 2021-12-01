@@ -33,10 +33,14 @@ Rails.application.config.to_prepare do
   # Admin check suplent number
   Decidim::Consultations::Response.class_eval do
     def suplent?(lang)
+      return unless title[lang].is_a?(String)
+
       title[lang]&.match(/([\-( ]+)(suplente?)([\-) ]+)/i)
     end
 
     def blanc?(lang)
+      return unless title[lang].is_a?(String)
+
       title[lang]&.match(/([\-( ]+)(blanco?)([\-) ]+)/i)
     end
   end
@@ -123,16 +127,19 @@ Rails.application.config.to_prepare do
         if @question.has_suplents?
           return if num_votes_ok?(vote_forms) || group_ok?(vote_forms) || blanc?(vote_forms)
         else
-          if get_blancs(forms).count.positive?
-            Rails.logger.debug "===has blanc: Number of votes #{forms.count} allowed 1"
-            return if forms.count == 1
+          if get_blancs(vote_forms).count.positive?
+            Rails.logger.debug "===has blanc: Number of votes #{vote_forms.count} allowed 1"
+            return if vote_forms.count == 1
           end
-          Rails.logger.debug "===has no supplents: Number of votes #{forms.count} allowed [#{@question.max_votes}, #{@question.min_votes}]"
-          return if forms.count.between?(@question.min_votes, @question.max_votes)
+          Rails.logger.debug "===has no supplents: Number of votes #{vote_forms.count} allowed [#{@question.max_votes}, #{@question.min_votes}]"
+          return if vote_forms.count.between?(@question.min_votes, @question.max_votes)
         end
       end
-      Rails.logger.debug "===ERROR==="
-      raise StandardError, I18n.t("activerecord.errors.models.decidim/consultations/vote.attributes.question.invalid_num_votes")
+      Rails.logger.debug "===ERROR=== Invalid number of votes"
+      errors.add(
+        :responses,
+        I18n.t("activerecord.errors.models.decidim/consultations/vote.attributes.question.invalid_num_votes")
+      )
     end
     # rubocop:enable Metrics/BlockNesting
 
