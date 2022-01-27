@@ -44,6 +44,6 @@ end
 
 group :production do
   gem "fog-aws"
-  gem "sidekiq", "~> 6.0"
+  gem "sidekiq", "~> 6.4"
   gem "sidekiq-cron"
 end
