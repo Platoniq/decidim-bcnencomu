@@ -105,6 +105,10 @@ es:
       direct_verifications_generic_1:
         explanation: Verificación directa genérica
         name: Asamblea DEMO
+    assemblies:
+      assemblies:
+        show:
+          title: Sobre esta assamblea
     components:
       meetings:
         settings:
