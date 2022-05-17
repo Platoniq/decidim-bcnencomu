@@ -49,3 +49,4 @@ spec/decidim_dummy_app
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+.rbenv-vars
