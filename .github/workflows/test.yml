@@ -44,7 +44,7 @@ jobs:
 
       - name: Precompile assets
         run: |
-          yarn install
+          npm install
           bundle exec rake assets:precompile
 
       - name: Run RSpec
