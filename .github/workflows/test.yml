@@ -42,10 +42,10 @@ jobs:
         run: |
           bundle exec rails db:create db:schema:load
 
-      - name: Run RSpec
-        run: SIMPLECOV=1 CODECOV=1 bundle exec rspec
-
       - name: Precompile assets
         run: |
           yarn install
           bundle exec rake assets:precompile
+
+      - name: Run RSpec
+        run: SIMPLECOV=1 CODECOV=1 bundle exec rspec
