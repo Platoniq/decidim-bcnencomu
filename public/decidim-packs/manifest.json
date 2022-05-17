@@ -201,6 +201,9 @@
         "js": [
           "/decidim-packs/js/vendors-node_modules_webpack-dev-server_client_index_js_protocol_ws_3A_hostname_localhost_por-54b5bb.js",
           "/decidim-packs/js/decidim_email.js"
+        ],
+        "css": [
+          "/decidim-packs/css/app_packs_entrypoints_bcnencomu_email_scss.css"
         ]
       }
     },
