@@ -2,7 +2,7 @@
 
 require_relative "boot"
 
-require "rails/all"
+require "decidim/rails"
 require_relative "../app/middleware/assemblies_scoper"
 
 # Require the gems listed in Gemfile, including any gems

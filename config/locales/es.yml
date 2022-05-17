@@ -23,6 +23,8 @@ es:
     alternative_assembly_types:
       organs: Órganos
   decidim:
+    accessibility:
+      front_page_link: Ir a la página principal
     admin:
       actions:
         back_to_responses: Volver a las respuestas

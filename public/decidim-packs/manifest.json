@@ -1,5 +1,7 @@
 {
   "application.js": "/decidim-packs/js/application.js",
+  "bcnencomu_consultations.js": "/decidim-packs/js/bcnencomu_consultations.js",
+  "bcnencomu_consultations_utils_multiple.js": "/decidim-packs/js/bcnencomu_consultations_utils_multiple.js",
   "bcnencomu_email.js": "/decidim-packs/js/bcnencomu_email.js",
   "css/_rbenv_versions_2_7_6_lib_ruby_gems_2_7_0_bundler_gems_decidim-8ad4ad8f4104_decidim-admin_app-d61f67.css": "/decidim-packs/css/_rbenv_versions_2_7_6_lib_ruby_gems_2_7_0_bundler_gems_decidim-8ad4ad8f4104_decidim-admin_app-d61f67.css",
   "css/_rbenv_versions_2_7_6_lib_ruby_gems_2_7_0_bundler_gems_decidim-8ad4ad8f4104_decidim-admin_app-d61f67.css.map": "/decidim-packs/css/_rbenv_versions_2_7_6_lib_ruby_gems_2_7_0_bundler_gems_decidim-8ad4ad8f4104_decidim-admin_app-d61f67.css.map",
@@ -102,6 +104,17 @@
         ]
       }
     },
+    "bcnencomu_consultations": {
+      "assets": {
+        "js": [
+          "/decidim-packs/js/vendors-node_modules_webpack-dev-server_client_index_js_protocol_ws_3A_hostname_localhost_por-54b5bb.js",
+          "/decidim-packs/js/bcnencomu_consultations.js"
+        ],
+        "css": [
+          "/decidim-packs/css/app_packs_entrypoints_bcnencomu_email_scss.css"
+        ]
+      }
+    },
     "bcnencomu_email": {
       "assets": {
         "js": [
@@ -188,9 +201,6 @@
         "js": [
           "/decidim-packs/js/vendors-node_modules_webpack-dev-server_client_index_js_protocol_ws_3A_hostname_localhost_por-54b5bb.js",
           "/decidim-packs/js/decidim_email.js"
-        ],
-        "css": [
-          "/decidim-packs/css/app_packs_entrypoints_bcnencomu_email_scss.css"
         ]
       }
     },
@@ -644,6 +654,17 @@
         ]
       }
     },
+    "bcnencomu_consultations_utils_multiple": {
+      "assets": {
+        "js": [
+          "/decidim-packs/js/vendors-node_modules_webpack-dev-server_client_index_js_protocol_ws_3A_hostname_localhost_por-54b5bb.js",
+          "/decidim-packs/js/bcnencomu_consultations_utils_multiple.js"
+        ],
+        "css": [
+          "/decidim-packs/css/app_packs_entrypoints_bcnencomu_email_scss.css"
+        ]
+      }
+    },
     "fearlesscities_theme": {
       "assets": {
         "js": [
@@ -679,6 +700,8 @@
   "js/_rbenv_versions_2_7_6_lib_ruby_gems_2_7_0_gems_decidim-decidim_awesome-0_8_3_app_packs_src_de-84e8ce.js": "/decidim-packs/js/_rbenv_versions_2_7_6_lib_ruby_gems_2_7_0_gems_decidim-decidim_awesome-0_8_3_app_packs_src_de-84e8ce.js",
   "js/_rbenv_versions_2_7_6_lib_ruby_gems_2_7_0_gems_decidim-decidim_awesome-0_8_3_app_packs_src_de-84e8ce.js.map": "/decidim-packs/js/_rbenv_versions_2_7_6_lib_ruby_gems_2_7_0_gems_decidim-decidim_awesome-0_8_3_app_packs_src_de-84e8ce.js.map",
   "js/application.js.map": "/decidim-packs/js/application.js.map",
+  "js/bcnencomu_consultations.js.map": "/decidim-packs/js/bcnencomu_consultations.js.map",
+  "js/bcnencomu_consultations_utils_multiple.js.map": "/decidim-packs/js/bcnencomu_consultations_utils_multiple.js.map",
   "js/bcnencomu_email.js.map": "/decidim-packs/js/bcnencomu_email.js.map",
   "js/decidim_accountability.js.map": "/decidim-packs/js/decidim_accountability.js.map",
   "js/decidim_accountability_admin.js.map": "/decidim-packs/js/decidim_accountability_admin.js.map",

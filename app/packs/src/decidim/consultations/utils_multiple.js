@@ -2,12 +2,6 @@
 
 $(function () {
 
-  // mansonry columns
-  // $('.masonry').masonry({
-  //   // options
-  //   itemSelector: '.masonry .column',
-  // });
-
   var MIN_VOTES=parseInt($('#remaining-votes-count').data('min-votes'), 10);
   var MAX_VOTES=parseInt($('#remaining-votes-count').data('max-votes'), 10);
   var HAS_SUPLENTS=!!$('#remaining-votes-count').data('has-suplents');
