@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/Platoniq/decidim-module-decidim_awesome
-  revision: f6f0bfb531c31e954b56b891ca487aac3ce16e34
+  revision: 8588e93b7510eae18e628afad2357614d15fd7a0
   branch: fix/foundation-theme
   specs:
     decidim-decidim_awesome (0.8.3)
