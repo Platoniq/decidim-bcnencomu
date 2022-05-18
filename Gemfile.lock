@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/Platoniq/decidim-module-decidim_awesome
-  revision: 8588e93b7510eae18e628afad2357614d15fd7a0
+  revision: 1b263b43afacb99000903dad368808e1d45721f2
   branch: fix/foundation-theme
   specs:
     decidim-decidim_awesome (0.8.3)
@@ -277,7 +277,7 @@ GEM
       aws-partitions (~> 1, >= 1.525.0)
       aws-sigv4 (~> 1.1)
       jmespath (~> 1.0)
-    aws-sdk-kms (1.56.0)
+    aws-sdk-kms (1.57.0)
       aws-sdk-core (~> 3, >= 3.127.0)
       aws-sigv4 (~> 1.1)
     aws-sdk-s3 (1.114.0)
@@ -453,7 +453,7 @@ GEM
     fugit (1.5.3)
       et-orbi (~> 1, >= 1.2.7)
       raabro (~> 1.4)
-    geocoder (1.7.5)
+    geocoder (1.8.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     graphql (1.12.24)
