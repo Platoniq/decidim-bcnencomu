@@ -6,7 +6,7 @@ describe "Visit meetings", type: :system do
   let(:organization) { create :organization }
   let(:participatory_process) { create :participatory_process, organization: organization }
   let(:meetings_component) { create :component, manifest_name: :meetings, participatory_space: participatory_process }
-  let!(:past_meeting) { create :meeting, :past, component: meetings_component }
+  let!(:past_meeting) { create :meeting, :past, :published, component: meetings_component }
 
   before do
     switch_to_host(organization.host)

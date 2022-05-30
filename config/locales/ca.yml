@@ -22,6 +22,8 @@ ca:
     alternative_assembly_types:
       organs: Òrgans
   decidim:
+    accessibility:
+      front_page_link: Ves a la pàgina principal
     admin:
       actions:
         back_to_responses: Torna a les respostes
@@ -102,6 +104,10 @@ ca:
       direct_verifications_generic_1:
         explanation: Verificació directa genèrica
         name: Assamblea DEMO
+    assemblies:
+      assemblies:
+        show:
+          title: Sobre aquesta assemblea
     components:
       meetings:
         settings:

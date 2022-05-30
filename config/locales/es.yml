@@ -23,6 +23,8 @@ es:
     alternative_assembly_types:
       organs: Órganos
   decidim:
+    accessibility:
+      front_page_link: Ir a la página principal
     admin:
       actions:
         back_to_responses: Volver a las respuestas
@@ -103,6 +105,10 @@ es:
       direct_verifications_generic_1:
         explanation: Verificación directa genérica
         name: Asamblea DEMO
+    assemblies:
+      assemblies:
+        show:
+          title: Sobre esta assamblea
     components:
       meetings:
         settings:

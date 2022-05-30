@@ -3,13 +3,16 @@ name: Test
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
 
 env:
-  RUBY_VERSION: 2.7.3
-  NODE_VERSION: 12.9.1
-    
+  RUBY_VERSION: 2.7.6
+  NODE_VERSION: 16.9.1
+  RAILS_ENV: test
+  DATABASE_USERNAME: postgres
+  DATABASE_PASSWORD: postgres
+
 jobs:
   test:
     name: Test
@@ -37,21 +40,12 @@ jobs:
 
       - name: Setup & create Database
         run: |
-          bundle exec rake decidim:generate_external_test_app
           bundle exec rails db:create db:schema:load
-        env:
-          RAILS_ENV: test
-          DATABASE_USERNAME: postgres
-          DATABASE_PASSWORD: postgres
 
       - name: Precompile assets
-        run: bundle exec rake assets:precompile
-        env:
-          RAILS_ENV: test
+        run: |
+          npm install
+          bundle exec rake assets:precompile
 
       - name: Run RSpec
         run: SIMPLECOV=1 CODECOV=1 bundle exec rspec
-        env:
-          RAILS_ENV: test
-          DATABASE_USERNAME: postgres
-          DATABASE_PASSWORD: postgres
