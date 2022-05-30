@@ -63,7 +63,7 @@ checksums = [
   {
     package: "decidim-meetings",
     files: {
-      "/app/controllers/decidim/meetings/meetings_controller.rb" => "0ba80f4e517f9adff431e715e5faa2fb"
+      "/app/controllers/decidim/meetings/meetings_controller.rb" => "305fb71d8d0fd9065be23dc75d551bf5"
     }
   }
 ]
