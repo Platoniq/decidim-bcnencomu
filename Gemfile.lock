@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Platoniq/decidim-module-civicrm
-  revision: 29479d8a1bb7eb7d45904de7a1deb4df2fe597d9
+  revision: 41fcc5ae74245db8d78d7622d3a33c2c685f5049
   branch: main
   specs:
     decidim-civicrm (0.26.1)
@@ -9,18 +9,8 @@ GIT
       decidim-verifications (~> 0.26.1)
 
 GIT
-  remote: https://github.com/Platoniq/decidim-module-decidim_awesome
-  revision: 1b263b43afacb99000903dad368808e1d45721f2
-  branch: fix/foundation-theme
-  specs:
-    decidim-decidim_awesome (0.8.3)
-      decidim-admin (>= 0.25.0, < 0.27)
-      decidim-core (>= 0.25.0, < 0.27)
-      sassc (~> 2.3)
-
-GIT
   remote: https://github.com/decidim/decidim
-  revision: 8ad4ad8f41048acee2ebeba9daba02036e5e8913
+  revision: 47f5586696494a45a543150fb7aecd9405e0b0c0
   branch: release/0.26-stable
   specs:
     decidim (0.26.1)
@@ -271,12 +261,12 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.2)
     aws-eventstream (1.2.0)
-    aws-partitions (1.587.0)
-    aws-sdk-core (3.131.0)
+    aws-partitions (1.594.0)
+    aws-sdk-core (3.131.1)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.525.0)
       aws-sigv4 (~> 1.1)
-      jmespath (~> 1.0)
+      jmespath (~> 1, >= 1.6.1)
     aws-sdk-kms (1.57.0)
       aws-sdk-core (~> 3, >= 3.127.0)
       aws-sigv4 (~> 1.1)
@@ -367,6 +357,10 @@ GEM
     db-query-matchers (0.10.0)
       activesupport (>= 4.0, < 7)
       rspec (~> 3.0)
+    decidim-decidim_awesome (0.8.3)
+      decidim-admin (>= 0.25.0, < 0.27)
+      decidim-core (>= 0.25.0, < 0.27)
+      sassc (~> 2.3)
     decidim-direct_verifications (1.2.1)
       decidim-admin (>= 0.25.0)
       decidim-core (>= 0.25.0)
@@ -540,7 +534,7 @@ GEM
       tomlrb
     mixlib-shellout (3.2.7)
       chef-utils
-    msgpack (1.5.1)
+    msgpack (1.5.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     mustache (1.1.1)
@@ -603,7 +597,7 @@ GEM
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.6.0)
-    rack (2.2.3)
+    rack (2.2.3.1)
     rack-attack (6.6.1)
       rack (>= 1.0, < 3)
     rack-cors (1.1.1)
@@ -664,7 +658,7 @@ GEM
       wisper (>= 1.6.1)
     redcarpet (3.5.1)
     redis (4.6.0)
-    regexp_parser (2.4.0)
+    regexp_parser (2.5.0)
     request_store (1.5.1)
       rack (>= 1.4)
     responders (3.0.1)
@@ -726,7 +720,7 @@ GEM
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
-    rubyXL (3.4.24)
+    rubyXL (3.4.25)
       nokogiri (>= 1.10.8)
       rubyzip (>= 1.3.0)
     rubyzip (2.3.2)
@@ -782,7 +776,7 @@ GEM
     thor (1.2.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    tomlrb (2.0.1)
+    tomlrb (2.0.3)
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
     uber (0.1.0)
@@ -824,7 +818,7 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    wicked_pdf (2.6.2)
+    wicked_pdf (2.6.3)
       activesupport
     wisper (2.0.1)
     wisper-rspec (1.1.0)
@@ -843,7 +837,7 @@ DEPENDENCIES
   decidim!
   decidim-civicrm!
   decidim-consultations!
-  decidim-decidim_awesome!
+  decidim-decidim_awesome
   decidim-dev!
   decidim-direct_verifications
   decidim-term_customizer!
