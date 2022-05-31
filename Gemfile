@@ -13,7 +13,7 @@ gem "decidim-consultations", DECIDIM_VERSION
 gem "decidim-civicrm", git: "https://github.com/Platoniq/decidim-module-civicrm", branch: "main"
 gem "decidim-decidim_awesome"
 gem "decidim-direct_verifications"
-gem "decidim-term_customizer", git: "https://github.com/mainio/decidim-module-term_customizer"
+gem "decidim-term_customizer", git: "https://github.com/mainio/decidim-module-term_customizer", branch: :develop
 gem "omniauth-decidim"
 
 gem "bootsnap", "~> 1.7"
@@ -24,6 +24,8 @@ gem "uglifier", "~> 4.1"
 
 gem "faker", "~> 2.14"
 gem "rspec"
+
+gem "image_processing", ">= 1.2"
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri

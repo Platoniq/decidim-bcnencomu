@@ -10,7 +10,8 @@ GIT
 
 GIT
   remote: https://github.com/mainio/decidim-module-term_customizer
-  revision: 9540a2ab20b872896e51ea5f97c5ebae3388ca60
+  revision: 0046905fff1fbf24ff721a8d8c30e2b767c448fb
+  branch: develop
   specs:
     decidim-term_customizer (0.26.0)
       decidim-admin (~> 0.26.0)
@@ -838,6 +839,7 @@ DEPENDENCIES
   faker (~> 2.14)
   fog-aws
   health_check
+  image_processing (>= 1.2)
   letter_opener_web (~> 1.3)
   listen (~> 3.1)
   omniauth-decidim
