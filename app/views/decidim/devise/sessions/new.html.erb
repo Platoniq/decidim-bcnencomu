@@ -19,7 +19,7 @@
             <%= t(".sign_in_disabled") %>
           </p>
         <% end %>
-        <%- if devise_mapping.recoverable? && controller_name != "passwords" %>
+        <%- if current_organization.sign_in_enabled? && devise_mapping.recoverable? && controller_name != "passwords" %>
           <p class="callout warning">
             <%= link_to t("devise.shared.links.activate_password"), new_password_path(resource_name) %>
           </p>
