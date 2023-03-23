@@ -238,6 +238,7 @@ es:
     questions:
       vote_button:
         already_voted: Ya has votado
+        confirm_revoke: ¿Seguro que quieres revocar el voto?
     resources:
       consultations:
         actions:
