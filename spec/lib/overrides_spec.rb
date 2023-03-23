@@ -37,6 +37,7 @@ checksums = [
       "/app/views/decidim/consultations/consultations/show.html.erb" => "84a1569b796f724efa304b9dfc40f68a",
       "/app/views/decidim/consultations/question_multiple_votes/_form.html.erb" => "af610283ce7ee20f5ef786228a263d4a",
       "/app/views/decidim/consultations/question_multiple_votes/_voting_rules.html.erb" => "207a85b27ee044bd6f5fa79e4ba9dce9",
+      "/app/views/decidim/consultations/questions/_vote_button.html.erb" => "a339b7639e8d36b0699ab3f7763872fb",
       "/app/views/decidim/consultations/questions/_vote_modal.html.erb" => "ae7c38afcc6588a00f8298ea69769da7",
       "/app/views/decidim/consultations/questions/show.html.erb" => "db9cbbd5933b17bce7ff93b1ff9ddfb7",
       # assets

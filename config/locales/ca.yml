@@ -239,6 +239,7 @@ ca:
     questions:
       vote_button:
         already_voted: Ja has votat
+        confirm_revoke: Segur que vols revocar el teu vot?
         vote: Vota
     resources:
       consultations:
