@@ -43,6 +43,12 @@ Rails.application.config.to_prepare do
 
       title[lang]&.match(/([\-( ]+)(blanco?)([\-) ]+)/i)
     end
+
+    def weighted_votes_count
+      return votes_count unless response_group.complete_list? && question.is_weighted?
+
+      votes_count + response_group.complete_votes_count * 0.2
+    end
   end
 
   # /app/models/decidim/consultations/question.rb
@@ -70,6 +76,52 @@ Rails.application.config.to_prepare do
 
     def has_blancs?
       @has_blancs ||= title.find { |l, _t| get_blancs(l).count.positive? }.present?
+    end
+
+    def sorted_results
+      return responses.order(votes_count: :desc) unless is_weighted?
+
+      responses.sort_by(&:weighted_votes_count).reverse
+    end
+
+    def most_voted_response
+      @most_voted_response ||= sorted_results.first
+    end
+  end
+
+  # /app/models/decidim/consultations/response_group.rb
+  Decidim::Consultations::ResponseGroup.class_eval do
+    def complete_list?
+      question.max_votes == responses.count && question.min_votes == suplents.count
+    end
+
+    def suplents
+      responses.select { |r| r.suplent? "ca" }
+    end
+
+    def complete_votes_count
+      Rails.cache.fetch("response_group/#{id}/complete_votes_count##{complete_votes_cache_time}", expires_in: 1.day) do
+        query = <<-SQL.squish
+          SELECT COUNT(*)
+          FROM (
+            SELECT v.decidim_author_id, COUNT(*) AS votes
+            FROM decidim_consultations_votes v
+            JOIN decidim_consultations_responses r ON v.decidim_consultations_response_id = r.id
+            JOIN decidim_consultations_questions q ON v.decidim_consultation_question_id = q.id
+            WHERE v.decidim_consultation_question_id = #{question.id} AND r.decidim_consultations_response_group_id = #{id}
+            GROUP BY v.decidim_author_id
+          ) a
+          WHERE a.votes = #{question.max_votes};
+        SQL
+
+        ActiveRecord::Base.connection.execute(Arel.sql(query))[0]["count"].to_i
+      end
+    end
+
+    private
+
+    def complete_votes_cache_time
+      [question.votes.maximum(:updated_at).to_i, question.updated_at.to_i].max
     end
   end
 
