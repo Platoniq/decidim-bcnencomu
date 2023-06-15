@@ -154,6 +154,74 @@ Rails.application.config.to_prepare do
     end
   end
 
+  # /app/commands/decidim/consultations/admin/create_question.rb
+  Decidim::Consultations::Admin::CreateQuestion.class_eval do
+    private
+
+    def create_question
+      question = Decidim::Consultations::Question.new(
+        consultation: form.context.current_consultation,
+        organization: form.context.current_consultation.organization,
+        decidim_scope_id: form.decidim_scope_id,
+        title: form.title,
+        slug: form.slug,
+        subtitle: form.subtitle,
+        what_is_decided: form.what_is_decided,
+        promoter_group: form.promoter_group,
+        participatory_scope: form.participatory_scope,
+        question_context: form.question_context,
+        hashtag: form.hashtag,
+        hero_image: form.hero_image,
+        banner_image: form.banner_image,
+        origin_scope: form.origin_scope,
+        origin_title: form.origin_title,
+        origin_url: form.origin_url,
+        external_voting: form.external_voting,
+        i_frame_url: form.i_frame_url,
+        order: form.order,
+        is_weighted: form.is_weighted
+      )
+
+      return question unless question.valid?
+
+      question.save
+      question
+    end
+  end
+
+  # /app/commands/decidim/consultations/admin/update_question.rb
+  Decidim::Consultations::Admin::UpdateQuestion.class_eval do
+    private
+
+    def attributes
+      {
+        decidim_scope_id: form.decidim_scope_id,
+        title: form.title,
+        subtitle: form.subtitle,
+        slug: form.slug,
+        what_is_decided: form.what_is_decided,
+        promoter_group: form.promoter_group,
+        participatory_scope: form.participatory_scope,
+        question_context: form.question_context,
+        hashtag: form.hashtag,
+        origin_scope: form.origin_scope,
+        origin_title: form.origin_title,
+        origin_url: form.origin_url,
+        external_voting: form.external_voting,
+        i_frame_url: form.i_frame_url,
+        order: form.order,
+        is_weighted: form.is_weighted
+      }.merge(
+        attachment_attributes(:hero_image, :banner_image)
+      )
+    end
+  end
+
+  # /app/forms/decidim/consultations/admin/question_form.rb
+  Decidim::Consultations::Admin::QuestionForm.class_eval do
+    attribute :is_weighted, Virtus::Attribute::Boolean, default: false
+  end
+
   # /app/forms/decidim/consultations/multi_vote_form.rb
   # Admin validation customization
   # Decidim::Consultations::Admin::QuestionConfigurationForm.class_eval do

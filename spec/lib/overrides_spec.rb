@@ -31,6 +31,7 @@ checksums = [
     files: {
       # views
       "/app/views/decidim/consultations/admin/consultations/results.html.erb" => "1a2f7afd79b20b1fcf66bdece660e8ae",
+      "/app/views/decidim/consultations/admin/questions/_form.html.erb" => "c55dc301f095ff35d788fd1c72810ac9",
       "/app/views/decidim/consultations/admin/question_configuration/_form.html.erb" => "bca0b383e5eac51414cc5c3347fc8227",
       "/app/views/decidim/consultations/admin/responses/_form.html.erb" => "6846d66395457acdd7d6ec839a49b0ec",
       "/app/views/decidim/consultations/consultations/_question.html.erb" => "364d7f8370cdbe7ae70c545fff2e21fa",
@@ -42,6 +43,11 @@ checksums = [
       "/app/views/decidim/consultations/questions/_vote_button.html.erb" => "a339b7639e8d36b0699ab3f7763872fb",
       "/app/views/decidim/consultations/questions/_vote_modal.html.erb" => "ae7c38afcc6588a00f8298ea69769da7",
       "/app/views/decidim/consultations/questions/show.html.erb" => "db9cbbd5933b17bce7ff93b1ff9ddfb7",
+      # forms
+      "/app/forms/decidim/consultations/admin/question_form.rb" => "ec32922ff3c79bd5e808208f25946ba2",
+      # commands
+      "/app/commands/decidim/consultations/admin/create_question.rb" => "98a78d88f832aa00dcf252b217454174",
+      "/app/commands/decidim/consultations/admin/update_question.rb" => "b3b972ee37c1005a88c30ddc7c9e8b25",
       # assets
       "/app/packs/src/decidim/consultations/utils_multiple.js" => "8ee3b5bfa77b98f9a953357a54770284",
       # classes in initializers/custom_consultations.rb
