@@ -82,7 +82,7 @@ $(function () {
     }
     // console.log('candidats', candidats, 'suplents', suplents, 'isBlanc', isBlanc($(this)), 'blanc', $blanc)
     if(candidats < 0 || suplents < 0) {
-      $(this).attr('checked', false);
+      $(this).prop('checked', false);
       if(suplents <0 ) alert('Ja has triat el nombre màxim de suplents!');
       else alert('Ja has triat el nombre màxim de candidats!');
       return false;

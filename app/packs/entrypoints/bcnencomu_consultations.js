@@ -1,1 +1,1 @@
-import "entrypoints/bcnencomu_email.scss";
+import "src/decidim/consultations/utils_multiple"
