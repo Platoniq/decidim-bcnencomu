@@ -45,7 +45,7 @@ Rails.application.config.to_prepare do
     end
 
     def weighted_votes_count
-      return votes_count unless response_group.complete_list? && question.is_weighted?
+      return votes_count unless response_group&.complete_list? && question.is_weighted?
 
       votes_count + response_group.complete_votes_count * 0.2
     end
