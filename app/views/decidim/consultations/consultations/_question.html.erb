@@ -23,8 +23,8 @@
                 <% if question.most_voted_response.present? %>
                   <span class="button__info"><%= translated_attribute question.most_voted_response.title %></span>
                   <span class="button__info">
-                    <%= question.most_voted_response.votes_count %>
-                    <%= t "consultations.question.votes_out_of", scope: "decidim", count: question.most_voted_response.votes_count %>
+                    <%= question.most_voted_response.weighted_votes_count %>
+                    <%= t "consultations.question.votes_out_of", scope: "decidim", count: question.most_voted_response.weighted_votes_count %>
                     <%= question.total_votes %>
                   </span>
                 <% end %>

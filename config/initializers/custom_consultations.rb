@@ -43,6 +43,12 @@ Rails.application.config.to_prepare do
 
       title[lang]&.match(/([\-( ]+)(blanco?)([\-) ]+)/i)
     end
+
+    def weighted_votes_count
+      return votes_count unless response_group&.complete_list? && question.is_weighted?
+
+      votes_count + response_group.complete_votes_count * 0.2
+    end
   end
 
   # /app/models/decidim/consultations/question.rb
@@ -70,6 +76,52 @@ Rails.application.config.to_prepare do
 
     def has_blancs?
       @has_blancs ||= title.find { |l, _t| get_blancs(l).count.positive? }.present?
+    end
+
+    def sorted_results
+      return responses.order(votes_count: :desc) unless is_weighted?
+
+      responses.sort_by(&:weighted_votes_count).reverse
+    end
+
+    def most_voted_response
+      @most_voted_response ||= sorted_results.first
+    end
+  end
+
+  # /app/models/decidim/consultations/response_group.rb
+  Decidim::Consultations::ResponseGroup.class_eval do
+    def complete_list?
+      question.max_votes == responses.count && question.min_votes == suplents.count
+    end
+
+    def suplents
+      responses.select { |r| r.suplent? "ca" }
+    end
+
+    def complete_votes_count
+      Rails.cache.fetch("response_group/#{id}/complete_votes_count##{complete_votes_cache_time}", expires_in: 1.day) do
+        query = <<-SQL.squish
+          SELECT COUNT(*)
+          FROM (
+            SELECT v.decidim_author_id, COUNT(*) AS votes
+            FROM decidim_consultations_votes v
+            JOIN decidim_consultations_responses r ON v.decidim_consultations_response_id = r.id
+            JOIN decidim_consultations_questions q ON v.decidim_consultation_question_id = q.id
+            WHERE v.decidim_consultation_question_id = #{question.id} AND r.decidim_consultations_response_group_id = #{id}
+            GROUP BY v.decidim_author_id
+          ) a
+          WHERE a.votes = #{question.max_votes};
+        SQL
+
+        ActiveRecord::Base.connection.execute(Arel.sql(query))[0]["count"].to_i
+      end
+    end
+
+    private
+
+    def complete_votes_cache_time
+      [question.votes.maximum(:updated_at).to_i, question.updated_at.to_i].max
     end
   end
 
@@ -100,6 +152,74 @@ Rails.application.config.to_prepare do
         flash.now[:warning] = "No s'han detectat vots en blanc."
       end
     end
+  end
+
+  # /app/commands/decidim/consultations/admin/create_question.rb
+  Decidim::Consultations::Admin::CreateQuestion.class_eval do
+    private
+
+    def create_question
+      question = Decidim::Consultations::Question.new(
+        consultation: form.context.current_consultation,
+        organization: form.context.current_consultation.organization,
+        decidim_scope_id: form.decidim_scope_id,
+        title: form.title,
+        slug: form.slug,
+        subtitle: form.subtitle,
+        what_is_decided: form.what_is_decided,
+        promoter_group: form.promoter_group,
+        participatory_scope: form.participatory_scope,
+        question_context: form.question_context,
+        hashtag: form.hashtag,
+        hero_image: form.hero_image,
+        banner_image: form.banner_image,
+        origin_scope: form.origin_scope,
+        origin_title: form.origin_title,
+        origin_url: form.origin_url,
+        external_voting: form.external_voting,
+        i_frame_url: form.i_frame_url,
+        order: form.order,
+        is_weighted: form.is_weighted
+      )
+
+      return question unless question.valid?
+
+      question.save
+      question
+    end
+  end
+
+  # /app/commands/decidim/consultations/admin/update_question.rb
+  Decidim::Consultations::Admin::UpdateQuestion.class_eval do
+    private
+
+    def attributes
+      {
+        decidim_scope_id: form.decidim_scope_id,
+        title: form.title,
+        subtitle: form.subtitle,
+        slug: form.slug,
+        what_is_decided: form.what_is_decided,
+        promoter_group: form.promoter_group,
+        participatory_scope: form.participatory_scope,
+        question_context: form.question_context,
+        hashtag: form.hashtag,
+        origin_scope: form.origin_scope,
+        origin_title: form.origin_title,
+        origin_url: form.origin_url,
+        external_voting: form.external_voting,
+        i_frame_url: form.i_frame_url,
+        order: form.order,
+        is_weighted: form.is_weighted
+      }.merge(
+        attachment_attributes(:hero_image, :banner_image)
+      )
+    end
+  end
+
+  # /app/forms/decidim/consultations/admin/question_form.rb
+  Decidim::Consultations::Admin::QuestionForm.class_eval do
+    attribute :is_weighted, Virtus::Attribute::Boolean, default: false
   end
 
   # /app/forms/decidim/consultations/multi_vote_form.rb
