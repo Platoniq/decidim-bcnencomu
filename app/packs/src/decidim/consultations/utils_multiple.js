@@ -57,13 +57,12 @@ $(function () {
   function updateBanner() {
     $remainingVotesCount.text(candidats + suplents);
     // If group marked, set to zero
-    if($(groups).is(':checked') || $blanc) {
+    if($blanc) {
       $remainingVotesCount.text(0);
     }
   }
 
   $(inputs).on('change', function() {
-
     updateCounters();
     if(isBlanc($(this))) {
       $(inputs).not($(this)).prop('checked', false);
@@ -89,6 +88,7 @@ $(function () {
     }
     // unmark groups if manually changed
     $(groups).prop('checked', false);
+    updateCounters();
     updateBanner();
   });
 
@@ -109,6 +109,7 @@ $(function () {
         var can_and_is_candidat = !isSuplent($(this)) && candidats > 0;
         if(can_and_is_suplent || can_and_is_candidat) {
           $(this).prop('checked', true);
+          updateCounters();
           updateBanner();
         }
       });

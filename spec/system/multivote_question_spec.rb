@@ -115,6 +115,31 @@ describe "Multiple Answers Question", type: :system do
         expect(page).not_to have_checked_field("vote_id_#{response_g.id}")
       end
 
+      it "decreases the number of candidats and suplents from incomplete group when checked" do
+        check("response_group_#{response_group_b.id}")
+
+        within "#remaining-votes-count" do
+          expect(page).to have_content("1")
+        end
+
+        expect(page).to have_checked_field("vote_id_#{response_e.id}")
+        expect(page).to have_checked_field("vote_id_#{response_f.id}")
+        expect(page).to have_checked_field("vote_id_#{response_g.id}")
+      end
+
+      it "decreases to zero when complete group is checked" do
+        check("response_group_#{response_group_a.id}")
+
+        within "#remaining-votes-count" do
+          expect(page).to have_content("0")
+        end
+
+        expect(page).to have_checked_field("vote_id_#{response_a.id}")
+        expect(page).to have_checked_field("vote_id_#{response_b.id}")
+        expect(page).to have_checked_field("vote_id_#{response_c.id}")
+        expect(page).to have_checked_field("vote_id_#{response_d.id}")
+      end
+
       it "decreases to zero the number of remaining votes when voting blank and removes blank when voting another response" do
         check("vote_id_#{response_h.id}")
 
@@ -125,6 +150,11 @@ describe "Multiple Answers Question", type: :system do
         expect(page).to have_checked_field("vote_id_#{response_h.id}")
 
         check("vote_id_#{response_a.id}")
+
+        within "#remaining-votes-count" do
+          expect(page).to have_content("3")
+        end
+
         check("vote_id_#{response_b.id}")
 
         within "#remaining-votes-count" do

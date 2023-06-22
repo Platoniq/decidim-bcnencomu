@@ -4,7 +4,7 @@
       <div class="card__content multiple_votes_form_group_title">
         <h5 class="card__title"><label>
           <% if current_participatory_space.has_suplents? %>
-            <input type="checkbox">
+            <input type="checkbox" id="response_group_<%= group.id %>">
           <% end %>
           <%= translated_attribute group.title %>
         </label></h5>
