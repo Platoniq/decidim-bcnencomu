@@ -4,16 +4,16 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-DECIDIM_VERSION = { git: "https://github.com/Platoniq/decidim", branch: "release/0.26.1-bcnencomu" }.freeze
+DECIDIM_VERSION = { git: "https://github.com/Platoniq/decidim", branch: "release/0.27.3-bcnencomu" }.freeze
 # DECIDIM_VERSION = "~> 0.26.1"
 
 gem "decidim", DECIDIM_VERSION
 gem "decidim-consultations", DECIDIM_VERSION
 
-gem "decidim-civicrm", git: "https://github.com/Platoniq/decidim-module-civicrm", branch: "main"
+gem "decidim-civicrm", git: "https://github.com/Platoniq/decidim-module-civicrm", branch: "chore/upgrade-0.27"
 gem "decidim-decidim_awesome"
 gem "decidim-direct_verifications"
-gem "decidim-term_customizer", git: "https://github.com/mainio/decidim-module-term_customizer", branch: :develop
+gem "decidim-term_customizer", git: "https://github.com/mainio/decidim-module-term_customizer", branch: :master
 gem "omniauth-decidim"
 
 gem "bootsnap", "~> 1.7"

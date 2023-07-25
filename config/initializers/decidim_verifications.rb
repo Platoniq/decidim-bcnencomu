@@ -36,7 +36,9 @@ end
 Decidim::Verifications.register_workflow(:direct_verifications_activistes) do |workflow|
   workflow.engine = Decidim::DirectVerifications::Verification::Engine
 end
+# rubocop:disable Naming/VariableNumber
 Decidim::Verifications.register_workflow(:direct_verifications_generic_1) do |workflow|
+  # rubocop:enable Naming/VariableNumber
   workflow.engine = Decidim::DirectVerifications::Verification::Engine
 end
 

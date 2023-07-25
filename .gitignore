@@ -23,6 +23,8 @@
 
 /node_modules
 /yarn-error.log
+public/sw.js
+public/sw.js.map
 
 /public/assets
 .byebug_history
@@ -39,6 +41,7 @@ public/uploads
 
 .rbenv-vars
 .vscode
+.rubocop*
 
 spec/decidim_dummy_app
 .rspec-failures
