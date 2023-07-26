@@ -26,6 +26,8 @@
 public/sw.js
 public/sw.js.map
 
+packages/webpack/node_modules
+
 /public/assets
 .byebug_history
 
