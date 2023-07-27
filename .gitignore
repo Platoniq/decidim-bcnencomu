@@ -21,10 +21,10 @@
 /storage/*
 !/storage/.keep
 
-/node_modules
+node_modules
 /yarn-error.log
-public/sw.js
-public/sw.js.map
+public/sw.js*
+public/sw.js.map*
 
 packages/webpack/node_modules
 
@@ -50,8 +50,7 @@ spec/decidim_dummy_app
 /public/decidim-packs
 /public/packs
 /public/packs-test
-/node_modules
-/yarn-error.log
 yarn-debug.log*
 .yarn-integrity
-.rbenv-vars
+
+.idea/

@@ -412,3 +412,13 @@ Rails.application.config.to_prepare do
   Decidim::Api::Schema.max_complexity = 5000
   Decidim::Api::Schema.max_depth = 50
 end
+
+Decidim.menu :menu do |menu|
+  menu.remove_item :consultations
+  menu.add_item :active_consultations,
+                I18n.t("menu.consultations", scope: "decidim"),
+                decidim_consultations.consultations_path(filter: { state: "active" }),
+                position: 2.65,
+                if: Decidim::Consultation.where(organization: current_organization).published.any?,
+                active: :inclusive
+end

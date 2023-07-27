@@ -1,7 +1,27 @@
 GIT
-  remote: https://github.com/Platoniq/decidim
-  revision: da7495abbcd9238e44328469f07022239f02991d
-  branch: release/0.27.4-bcnencomu
+  remote: https://github.com/Platoniq/decidim-module-civicrm
+  revision: b2b2ea3b62659892ca942037b17629df84881bce
+  branch: chore/upgrade-0.27
+  specs:
+    decidim-civicrm (0.27.3)
+      decidim-admin (~> 0.27.3)
+      decidim-core (~> 0.27.3)
+      decidim-verifications (~> 0.27.3)
+
+GIT
+  remote: https://github.com/decidim-ice/decidim-module-decidim_awesome
+  revision: 391cbf2e3ccd4dd13daabf71451158f91b17e532
+  branch: main
+  specs:
+    decidim-decidim_awesome (0.9.2)
+      decidim-admin (>= 0.26.0, < 0.28)
+      decidim-core (>= 0.26.0, < 0.28)
+      sassc (~> 2.3)
+
+GIT
+  remote: https://github.com/decidim/decidim
+  revision: ec4e0a80668e805c0d7565e4cd31f97d34de70cd
+  branch: release/0.27-stable
   specs:
     decidim (0.27.4)
       decidim-accountability (= 0.27.4)
@@ -174,16 +194,6 @@ GIT
       decidim-forms (= 0.27.4)
     decidim-verifications (0.27.4)
       decidim-core (= 0.27.4)
-
-GIT
-  remote: https://github.com/Platoniq/decidim-module-civicrm
-  revision: b2b2ea3b62659892ca942037b17629df84881bce
-  branch: chore/upgrade-0.27
-  specs:
-    decidim-civicrm (0.27.3)
-      decidim-admin (~> 0.27.3)
-      decidim-core (~> 0.27.3)
-      decidim-verifications (~> 0.27.3)
 
 GIT
   remote: https://github.com/mainio/decidim-module-term_customizer
@@ -363,10 +373,6 @@ GEM
     db-query-matchers (0.10.0)
       activesupport (>= 4.0, < 7)
       rspec (~> 3.0)
-    decidim-decidim_awesome (0.9.1)
-      decidim-admin (>= 0.26.0, < 0.28)
-      decidim-core (>= 0.26.0, < 0.28)
-      sassc (~> 2.3)
     decidim-direct_verifications (1.2.1)
       decidim-admin (>= 0.25.0)
       decidim-core (>= 0.25.0)
@@ -646,8 +652,8 @@ GEM
     raabro (1.4.0)
     racc (1.7.1)
     rack (2.2.7)
-    rack-attack (6.6.1)
-      rack (>= 1.0, < 3)
+    rack-attack (6.7.0)
+      rack (>= 1.0, < 4)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
     rack-protection (3.0.6)
@@ -679,8 +685,8 @@ GEM
       activesupport (>= 5.0.0)
       minitest
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.4.3)
-      loofah (~> 2.3)
+    rails-html-sanitizer (1.5.0)
+      loofah (~> 2.19, >= 2.19.1)
     rails-i18n (6.0.0)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 7)
@@ -696,7 +702,7 @@ GEM
       activerecord (>= 5.2.4)
       activesupport (>= 5.2.4)
       i18n
-    rb-fsevent (0.11.1)
+    rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     redcarpet (3.6.0)
@@ -871,7 +877,7 @@ GEM
     webpush (1.1.0)
       hkdf (~> 0.2)
       jwt (~> 2.0)
-    websocket-driver (0.7.5)
+    websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     wicked_pdf (2.6.3)
@@ -881,7 +887,7 @@ GEM
     wkhtmltopdf-binary (0.12.6.6)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.8)
+    zeitwerk (2.6.9)
 
 PLATFORMS
   arm64-darwin-21
@@ -895,7 +901,7 @@ DEPENDENCIES
   decidim!
   decidim-civicrm!
   decidim-consultations!
-  decidim-decidim_awesome
+  decidim-decidim_awesome!
   decidim-dev!
   decidim-direct_verifications
   decidim-term_customizer!

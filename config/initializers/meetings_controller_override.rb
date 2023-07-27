@@ -4,14 +4,15 @@ Rails.application.config.to_prepare do
   Decidim::Meetings::MeetingsController.class_eval do
     def default_filter_params
       {
-        search_text: "",
-        date: %w(all),
+        search_text_cont: "",
+        with_any_date: %w(all),
         activity: "all",
-        scope_id: default_filter_scope_params,
-        category_id: default_filter_category_params,
-        state: nil,
-        origin: default_filter_origin_params,
-        type: default_filter_type_params
+        with_availability: "",
+        with_any_scope: default_filter_scope_params,
+        with_any_category: default_filter_category_params,
+        with_any_state: nil,
+        with_any_origin: default_filter_origin_params,
+        with_any_type: default_filter_type_params
       }
     end
   end
