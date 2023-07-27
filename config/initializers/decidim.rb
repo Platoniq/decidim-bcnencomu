@@ -417,7 +417,7 @@ Decidim.menu :menu do |menu|
   menu.remove_item :consultations
   menu.add_item :active_consultations,
                 I18n.t("menu.consultations", scope: "decidim"),
-                decidim_consultations.consultations_path(filter: { state: "active" }),
+                decidim_consultations.consultations_path(filter: { with_any_date: "active" }),
                 position: 2.65,
                 if: Decidim::Consultation.where(organization: current_organization).published.any?,
                 active: :inclusive
