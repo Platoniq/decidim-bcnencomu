@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/Platoniq/decidim-module-civicrm
-  revision: b2b2ea3b62659892ca942037b17629df84881bce
-  branch: chore/upgrade-0.27
+  revision: 81b091723bf7c2afebb1beb9f9239cbd18324ba6
+  branch: main
   specs:
     decidim-civicrm (0.27.3)
       decidim-admin (~> 0.27.3)
