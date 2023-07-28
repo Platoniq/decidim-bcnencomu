@@ -4,7 +4,7 @@ module Decidim
   module DirectVerifications
     module Verification
       module Admin
-        class UserAuthorizationsController < ApplicationController
+        class UserAuthorizationsController < Decidim::DirectVerifications::Verification::Admin::ApplicationController
           include NeedsPermission
           layout false
 
