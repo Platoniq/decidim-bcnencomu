@@ -16,7 +16,9 @@ module Decidim
 
           def destroy
             if authorization.destroy
+              # rubocop:disable Rails/I18nLocaleTexts
               flash[:notice] = "successfully"
+              # rubocop:enable Rails/I18nLocaleTexts
               redirect_to authorizations_path
             end
           end
