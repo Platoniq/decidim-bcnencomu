@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_24_114773) do
+ActiveRecord::Schema.define(version: 2023_07_28_100143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -1691,6 +1691,18 @@ ActiveRecord::Schema.define(version: 2023_07_24_114773) do
     t.index ["reset_password_token"], name: "index_decidim_system_admins_on_reset_password_token", unique: true
   end
 
+  create_table "decidim_templates_templates", force: :cascade do |t|
+    t.integer "decidim_organization_id", null: false
+    t.string "templatable_type"
+    t.bigint "templatable_id"
+    t.jsonb "name", null: false
+    t.jsonb "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["decidim_organization_id"], name: "index_decidim_templates_organization"
+    t.index ["templatable_type", "templatable_id"], name: "index_decidim_templates_templatable"
+  end
+
   create_table "decidim_term_customizer_constraints", force: :cascade do |t|
     t.bigint "decidim_organization_id", null: false
     t.string "subject_type"
@@ -1733,20 +1745,6 @@ ActiveRecord::Schema.define(version: 2023_07_24_114773) do
     t.index ["decidim_user_id", "decidim_user_group_id"], name: "decidim_user_group_memberships_unique_user_and_group_ids", unique: true
     t.index ["decidim_user_id"], name: "index_decidim_user_group_memberships_on_decidim_user_id"
     t.index ["role", "decidim_user_group_id"], name: "decidim_group_membership_one_creator_per_group", unique: true, where: "((role)::text = 'creator'::text)"
-  end
-
-  create_table "decidim_user_groups", id: :serial, force: :cascade do |t|
-    t.string "name", null: false
-    t.string "document_number", null: false
-    t.string "phone", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "avatar"
-    t.datetime "verified_at"
-    t.datetime "rejected_at"
-    t.integer "decidim_organization_id", null: false
-    t.index ["decidim_organization_id", "document_number"], name: "index_decidim_user_groups_document_number_on_organization_id", unique: true
-    t.index ["decidim_organization_id", "name"], name: "index_decidim_user_groups_names_on_organization_id", unique: true
   end
 
   create_table "decidim_user_moderations", force: :cascade do |t|
