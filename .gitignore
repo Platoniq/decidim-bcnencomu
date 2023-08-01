@@ -21,8 +21,12 @@
 /storage/*
 !/storage/.keep
 
-/node_modules
+node_modules
 /yarn-error.log
+public/sw.js*
+public/sw.js.map*
+
+packages/webpack/node_modules
 
 /public/assets
 .byebug_history
@@ -39,14 +43,14 @@ public/uploads
 
 .rbenv-vars
 .vscode
+.rubocop*
 
 spec/decidim_dummy_app
 .rspec-failures
 /public/decidim-packs
 /public/packs
 /public/packs-test
-/node_modules
-/yarn-error.log
 yarn-debug.log*
 .yarn-integrity
-.rbenv-vars
+
+.idea/

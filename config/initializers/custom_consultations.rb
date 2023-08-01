@@ -47,7 +47,7 @@ Rails.application.config.to_prepare do
     def weighted_votes_count
       return votes_count unless response_group&.complete_list? && question.is_weighted?
 
-      votes_count + response_group.complete_votes_count * 0.2
+      votes_count + (response_group.complete_votes_count * 0.2)
     end
   end
 
@@ -219,7 +219,7 @@ Rails.application.config.to_prepare do
 
   # /app/forms/decidim/consultations/admin/question_form.rb
   Decidim::Consultations::Admin::QuestionForm.class_eval do
-    attribute :is_weighted, Virtus::Attribute::Boolean, default: false
+    attribute :is_weighted, :boolean, default: false
   end
 
   # /app/forms/decidim/consultations/multi_vote_form.rb
@@ -248,10 +248,10 @@ Rails.application.config.to_prepare do
           return if num_votes_ok?(vote_forms) || group_ok?(vote_forms) || blanc?(vote_forms)
         else
           if get_blancs(vote_forms).count.positive?
-            Rails.logger.debug "===has blanc: Number of votes #{vote_forms.count} allowed 1"
+            Rails.logger.debug { "===has blanc: Number of votes #{vote_forms.count} allowed 1" }
             return if vote_forms.count == 1
           end
-          Rails.logger.debug "===has no supplents: Number of votes #{vote_forms.count} allowed [#{@question.max_votes}, #{@question.min_votes}]"
+          Rails.logger.debug { "===has no supplents: Number of votes #{vote_forms.count} allowed [#{@question.max_votes}, #{@question.min_votes}]" }
           return if vote_forms.count.between?(@question.min_votes, @question.max_votes)
         end
       end
@@ -264,13 +264,13 @@ Rails.application.config.to_prepare do
     # rubocop:enable Metrics/BlockNesting
 
     def blanc?(forms)
-      Rails.logger.debug "===blanc? Total blancs #{get_blancs(forms).count} total forms #{forms.count}"
+      Rails.logger.debug { "===blanc? Total blancs #{get_blancs(forms).count} total forms #{forms.count}" }
       (get_blancs(forms).count == forms.count) && forms.count.positive?
     end
 
     def group_ok?(forms)
       groups = forms.map { |f| f.response.response_group&.id }.uniq
-      Rails.logger.debug "===group_ok? groups found #{groups.count}, group ids #{groups}"
+      Rails.logger.debug { "===group_ok? groups found #{groups.count}, group ids #{groups}" }
       return false if groups.count > 1 || groups.count.zero? || groups[0].blank?
 
       # max votable titular/suplents in this group
@@ -281,14 +281,14 @@ Rails.application.config.to_prepare do
       total_titulars = get_candidats(forms).count
       total_suplents = get_suplents(forms).count
 
-      Rails.logger.debug "===group_ok? Total titulars in group #{groups[0]}: #{total_titulars} expected #{min_titulars}"
-      Rails.logger.debug "===group_ok? Total suplents in group #{groups[0]}: #{total_suplents} expected #{min_suplents}"
+      Rails.logger.debug { "===group_ok? Total titulars in group #{groups[0]}: #{total_titulars} expected #{min_titulars}" }
+      Rails.logger.debug { "===group_ok? Total suplents in group #{groups[0]}: #{total_suplents} expected #{min_suplents}" }
       total_titulars == min_titulars && total_suplents == min_suplents
     end
 
     def num_votes_ok?(forms)
-      Rails.logger.debug "===candidats_ok? Total candidats #{get_candidats(forms).count} expected #{@question.max_votes - @question.min_votes}"
-      Rails.logger.debug "===suplents_ok? Total suplents #{get_suplents(forms).count} expected #{@question.min_votes}"
+      Rails.logger.debug { "===candidats_ok? Total candidats #{get_candidats(forms).count} expected #{@question.max_votes - @question.min_votes}" }
+      Rails.logger.debug { "===suplents_ok? Total suplents #{get_suplents(forms).count} expected #{@question.min_votes}" }
       suplents_ok?(forms) && candidats_ok?(forms)
     end
 
