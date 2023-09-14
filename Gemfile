@@ -46,6 +46,6 @@ group :production do
   gem "fog-aws" # to remove once images migrated
   gem "sentry-rails"
   gem "sentry-ruby"
-  gem "sidekiq", "~> 6.0"
+  gem "sidekiq", "~> 7.1"
   gem "sidekiq-cron"
 end
