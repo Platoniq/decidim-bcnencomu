@@ -64,7 +64,7 @@ checksums = [
       # just to take into the account if some routes change
       "/lib/decidim/assemblies/engine.rb" => "9d08692b06cf403b6b788c728733f36e",
       "/lib/decidim/assemblies/admin_engine.rb" => "94c7e7db6aa85d2ea196e254a68e4626",
-      "/app/models/decidim/assembly.rb" => "b9ed4a9f5d822109728aed51bf5dcb48",
+      "/app/models/decidim/assembly.rb" => "61c375d6091ac84b3ac04ab2b72f747c",
       "/app/views/decidim/assemblies/_filter_by_type.html.erb" => "c6ddcc8dd42702031f8027bb56b69687",
       "/app/views/decidim/assemblies/assemblies/_parent_assemblies.html.erb" => "fd026d4ee40dd1d5ebf8ad9ec5d0dbb4"
     }
