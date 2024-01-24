@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_28_100143) do
+ActiveRecord::Schema.define(version: 2024_01_24_134652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -750,7 +750,7 @@ ActiveRecord::Schema.define(version: 2023_07_28_100143) do
     t.bigint "resource_id"
     t.string "decidim_author_type"
     t.bigint "decidim_author_id"
-    t.integer "decidim_user_group_id"
+    t.integer "decidim_user_group_id", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["decidim_author_type", "decidim_author_id"], name: "idx_endorsements_authors"
@@ -1745,6 +1745,20 @@ ActiveRecord::Schema.define(version: 2023_07_28_100143) do
     t.index ["decidim_user_id", "decidim_user_group_id"], name: "decidim_user_group_memberships_unique_user_and_group_ids", unique: true
     t.index ["decidim_user_id"], name: "index_decidim_user_group_memberships_on_decidim_user_id"
     t.index ["role", "decidim_user_group_id"], name: "decidim_group_membership_one_creator_per_group", unique: true, where: "((role)::text = 'creator'::text)"
+  end
+
+  create_table "decidim_user_groups", id: :serial, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "document_number", null: false
+    t.string "phone", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "avatar"
+    t.datetime "verified_at"
+    t.datetime "rejected_at"
+    t.integer "decidim_organization_id", null: false
+    t.index ["decidim_organization_id", "document_number"], name: "index_decidim_user_groups_document_number_on_organization_id", unique: true
+    t.index ["decidim_organization_id", "name"], name: "index_decidim_user_groups_names_on_organization_id", unique: true
   end
 
   create_table "decidim_user_moderations", force: :cascade do |t|
