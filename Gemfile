@@ -13,6 +13,7 @@ gem "decidim-civicrm", git: "https://github.com/Platoniq/decidim-module-civicrm"
 gem "decidim-decidim_awesome", git: "https://github.com/decidim-ice/decidim-module-decidim_awesome", branch: "main"
 gem "decidim-direct_verifications", git: "https://github.com/Platoniq/decidim-verifications-direct_verifications", branch: "main"
 gem "decidim-term_customizer", git: "https://github.com/mainio/decidim-module-term_customizer", branch: "master"
+gem "omniauth-decidim"
 
 gem "bootsnap", "~> 1.7"
 gem "health_check"
