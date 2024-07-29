@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Platoniq/decidim-module-civicrm
-  revision: 501de42951a7aa81ad69e9c8490ea896c9f929e8
+  revision: 0271763cde5861b03951ce550f316a9e915ae771
   branch: feat/api-v4
   specs:
     decidim-civicrm (0.27.3)
