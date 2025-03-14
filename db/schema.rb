@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_01_24_134652) do
+ActiveRecord::Schema.define(version: 2025_03_14_114326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -323,6 +323,26 @@ ActiveRecord::Schema.define(version: 2024_01_24_134652) do
     t.index ["decidim_organization_id"], name: "decidim_awesome_editor_images_constraint_organization"
   end
 
+  create_table "decidim_awesome_proposal_extra_fields", force: :cascade do |t|
+    t.bigint "decidim_proposal_id", null: false
+    t.jsonb "vote_weight_totals"
+    t.integer "weight_total", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "private_body"
+    t.string "decidim_proposal_type", null: false
+    t.datetime "private_body_updated_at"
+    t.index ["decidim_proposal_id", "decidim_proposal_type"], name: "index_decidim_awesome_proposal_extra_fields_on_decidim_proposal"
+  end
+
+  create_table "decidim_awesome_vote_weights", force: :cascade do |t|
+    t.bigint "proposal_vote_id", null: false
+    t.integer "weight", default: 1, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["proposal_vote_id"], name: "decidim_awesome_proposals_weights_vote"
+  end
+
   create_table "decidim_blogs_posts", id: :serial, force: :cascade do |t|
     t.jsonb "title"
     t.jsonb "body"
@@ -548,6 +568,8 @@ ActiveRecord::Schema.define(version: 2024_01_24_134652) do
     t.string "decidim_participatory_space_type"
     t.integer "decidim_participatory_space_id"
     t.datetime "deleted_at"
+    t.integer "up_votes_count", default: 0, null: false
+    t.integer "down_votes_count", default: 0, null: false
     t.index ["created_at"], name: "index_decidim_comments_comments_on_created_at"
     t.index ["decidim_author_id", "decidim_author_type"], name: "index_decidim_comments_comments_on_decidim_author"
     t.index ["decidim_author_id"], name: "decidim_comments_comment_author"
@@ -1461,6 +1483,7 @@ ActiveRecord::Schema.define(version: 2024_01_24_134652) do
     t.jsonb "body"
     t.integer "comments_count", default: 0, null: false
     t.integer "follows_count", default: 0, null: false
+    t.integer "valuation_assignments_count", default: 0
     t.index "md5((body)::text)", name: "decidim_proposals_proposal_body_search"
     t.index "md5((title)::text)", name: "decidim_proposals_proposal_title_search"
     t.index ["created_at"], name: "index_decidim_proposals_proposals_on_created_at"
