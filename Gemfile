@@ -6,13 +6,13 @@ ruby RUBY_VERSION
 
 DECIDIM_VERSION = "0.27.5"
 
-gem "decidim", DECIDIM_VERSION
+gem "decidim", git: "https://github.com/Platoniq/decidim", branch: "v0.27.5-tilelayer-update"
 gem "decidim-consultations", DECIDIM_VERSION
 
 gem "decidim-civicrm", git: "https://github.com/Platoniq/decidim-module-civicrm", branch: "main"
-gem "decidim-decidim_awesome", git: "https://github.com/decidim-ice/decidim-module-decidim_awesome", branch: "main"
-gem "decidim-direct_verifications", git: "https://github.com/Platoniq/decidim-verifications-direct_verifications", branch: "main"
-gem "decidim-term_customizer", git: "https://github.com/mainio/decidim-module-term_customizer", branch: "master"
+gem "decidim-decidim_awesome", git: "https://github.com/Platoniq/decidim-module-decidim_awesome", branch: "0.10.x-leaflet-tilelayer"
+gem "decidim-direct_verifications", git: "https://github.com/Platoniq/decidim-verifications-direct_verifications", tag: "v1.3.0"
+gem "decidim-term_customizer", git: "https://github.com/mainio/decidim-module-term_customizer", branch: "release/0.27-stable"
 gem "omniauth-decidim"
 
 gem "bootsnap", "~> 1.7"
